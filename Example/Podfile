@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'NUCharts_Example' do
+  pod 'NUCharts', :path => '../'
+
+  target 'NUCharts_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
