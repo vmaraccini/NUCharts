@@ -1,0 +1,19 @@
+PODS:
+  - Masonry (1.0.0)
+  - NUCharts (0.1.0)
+
+DEPENDENCIES:
+  - Masonry
+  - NUCharts (from `../`)
+
+EXTERNAL SOURCES:
+  NUCharts:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
+  NUCharts: 4873aa66d4a6e62ab2d78340b072f5202b799d46
+
+PODFILE CHECKSUM: 9c84ced7e6861c43a08242f4151d33120eb9facd
+
+COCOAPODS: 1.0.0

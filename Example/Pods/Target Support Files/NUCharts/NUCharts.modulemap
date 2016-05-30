@@ -1,0 +1,6 @@
+framework module NUCharts {
+  umbrella header "NUCharts-umbrella.h"
+
+  export *
+  module * { export * }
+}

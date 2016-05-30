@@ -2,7 +2,7 @@ use_frameworks!
 
 target 'NUCharts_Example' do
   pod 'NUCharts', :path => '../'
-
+  pod 'Masonry'
   target 'NUCharts_Tests' do
     inherit! :search_paths
 

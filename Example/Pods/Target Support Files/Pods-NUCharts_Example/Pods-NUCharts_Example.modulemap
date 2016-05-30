@@ -1,0 +1,6 @@
+framework module Pods_NUCharts_Example {
+  umbrella header "Pods-NUCharts_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
