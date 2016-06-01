@@ -20,13 +20,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
 
     NUChartView *view = [NUChartView new];
-    view.chartRenderer.interpolator = [NUChartFlatYBezierInterpolator new];
-    view.chartData = [[NUChartData alloc] initWithxValues:@[@(0),@(50),@(100),@(150)]
-                                                  yValues:@[@(0),@(100),@(0),@(100)]];
 
+    NUChartRenderStructure *bezierStruct = [self addBezierCurve:view];
+    [self addAverageLine:view
+            atSameAxisAs:bezierStruct];
+    [self addPoints:view];
 
     [self.view addSubview:view];
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -34,6 +35,45 @@
         make.size.mas_equalTo(200);
     }];
 
+}
+
+- (NUChartRenderStructure *)addBezierCurve:(NUChartView *)view
+{
+    NUChartData *data = [[NUChartData alloc] initWithxValues:@[@(0),@(50),@(100),@(150)]
+                                                     yValues:@[@(0),@(100),@(0),@(100)]];
+
+    NUChartLineRenderer *renderer = [NUChartLineRenderer new];
+    renderer.lineWidth = 2;
+    renderer.interpolator = [NUChartFlatYBezierInterpolator new];
+    return [view addDataSet:data
+               withRenderer:renderer];
+}
+
+- (NUChartRenderStructure *)addAverageLine:(NUChartView *)view
+                              atSameAxisAs:(NUChartRenderStructure *)sibling
+{
+    NUChartData *average = [[NUChartData alloc] initWithxValues:@[@(0),@(150)]
+                                                        yValues:@[@(50),@(50)]];
+
+    NUChartLineRenderer *renderer = [NUChartLineRenderer new];
+    renderer.lineWidth = 1;
+    renderer.dashPattern = @[@2, @5];
+    return [view addDataSet:average
+               withRenderer:renderer
+                    toAxisX:sibling.xAxis
+                      axisY:sibling.yAxis];
+}
+
+- (NUChartRenderStructure *)addPoints:(NUChartView *)view
+{
+    NUChartData *points = [[NUChartData alloc] initWithxValues:@[@(0),@(150)]
+                                                       yValues:@[@(0),@(100)]];
+
+    NUChartPointRenderer *renderer = [NUChartPointRenderer new];
+    renderer.diameter = 8;
+    renderer.fillColor = [UIColor blueColor];
+    return [view addDataSet:points
+               withRenderer:renderer];
 }
 
 - (void)didReceiveMemoryWarning
