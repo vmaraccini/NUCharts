@@ -7,56 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07EF1A742A3E50B637595058EBB3ADE6 /* NUChartPointRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAB061385D9D67DBCE47B3798379845 /* NUChartPointRenderer.m */; };
 		09319DC7FF28A7E69562C0CE680CEA34 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 537638D0C329C86D4ED401237F5D895F /* MASCompositeConstraint.m */; };
 		0DD5039B20643A472D35707E76BB364C /* Pods-NUCharts_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6B38D5410E7AB31DC4D9ED4818E5A /* Pods-NUCharts_Example-dummy.m */; };
 		0F787EBF9071328BC31B6F6D1FDA24C7 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C550CDA10D592ABB6A0383A3509F05 /* NSArray+MASAdditions.m */; };
 		15DEB2DD31B88E5B9FCFC40763CD1F57 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F0183E721D7FD6AF70B4A911C1B1B95 /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B6844B00D8DA1B5E51B65CBF46AA556 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
+		1DF5983410CDB80A61D117139B52E447 /* NUChartFlatYBezierInterpolator.h in Headers */ = {isa = PBXBuildFile; fileRef = F564D4BF1044E2CCE95B235237A2924A /* NUChartFlatYBezierInterpolator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		210E54DB4CD8F8309D1C7A1D4D563F09 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = AD04C760F0EB4FE7B23D85D56145A97F /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		31F02E64D7C7C8D5BE04B569A06AA7D1 /* NUChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35AFEBC13BDBF91BA3B656794428020C /* NUChartView.m */; };
-		3804908894262DE3D0E8F6C5E3D9AC46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
+		278F298A62801F6139529AB1AF28353B /* NUChartBaseInterpolator+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = C6B3272E0E2F9BDEF8FE4CFF24280329 /* NUChartBaseInterpolator+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30B9AE85F77BB30EA2052BDA903D24CE /* NUChartBaseInterpolator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1CD072FE9F0BCEDB8EEB46CB86E726 /* NUChartBaseInterpolator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		369783476C5E17E0C549D37151D507EF /* NUChartAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = B65D34BDF79A4913F3606738BF9AA4CB /* NUChartAxis.m */; };
 		3998CE3B281A404A683EF62C70E804FA /* Pods-NUCharts_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 61566C382C243747AAD6C712B55BC479 /* Pods-NUCharts_Tests-dummy.m */; };
+		3D20390654046FD10B3E09847932F75E /* NUChartBaseRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DAC8A850D89C6A55BDD830826FDA0406 /* NUChartBaseRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3E753C4C5C7631E962401C456802D57A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
 		401E584A250A351D34B366F63187A081 /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A649F9297535214EF97548C9EA9FA33 /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		40B541CE842A285A2997A352DB8DD1C6 /* NUChartLinearInterpolator.h in Headers */ = {isa = PBXBuildFile; fileRef = 44C402DD939330DC54D2F0991F8EF5D3 /* NUChartLinearInterpolator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		423C547758DEF5005C0494CBCECB4484 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = 303B58A2959C8EEE96799AD558DDA1D3 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4889DCFCDDD5EF13A32CF556E16C8D9E /* NUChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35AFEBC13BDBF91BA3B656794428020C /* NUChartView.m */; };
+		4CEC7944E295CFF10B598CD6F964EDEC /* NUChartBaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 809964304FED49918D943D4BF3204C08 /* NUChartBaseRenderer.m */; };
+		4EECC466BD889572A10CE18A521D1571 /* NUChartPointInterpolator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A932C32238E1E024EF00284796D22 /* NUChartPointInterpolator.m */; };
 		525C1EB1DF453A0E070E60844577C8DF /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = A02D339E60E114FCC992372E93245BA1 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		57B36412B5BD74147DB295928B6C0733 /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = C484EF8499F67EC81CA7E27930A63CDC /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B25FE8DC265E9248284275B868405EF /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 79BEFB59B86F59C579FF7594DCF78FEB /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C5D9E79C29C102A6338A1A4EFAB7142 /* NUChartBaseInterpolator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C333799C16DBE784BF2D40412376114 /* NUChartBaseInterpolator.m */; };
+		72C2572C286CAF5663965ABD8BD38695 /* NUChartLinearInterpolator.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B1822821F5F7514F4C78CFBEADD385 /* NUChartLinearInterpolator.m */; };
+		744815226D32A6F22A9E6B701AD57720 /* NUChartData.h in Headers */ = {isa = PBXBuildFile; fileRef = 5327A7B473E0225ADEE5B219817EEE76 /* NUChartData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		747D181536AE92CD19C540EEA3DF3305 /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = FF217FE4E512E3883BAD867868CB42D9 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		758B5000CF5105EC81C58C074ECFFBD7 /* Pods-NUCharts_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 69E37234C06AE0DFF50BA46DBDEBC3A2 /* Pods-NUCharts_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75EF519CB2BE595F6F3D71F4E78342FB /* NUChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 0915298CBE6B3E948F16D74E9FEEA628 /* NUChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7B2C3E0AED0FE3682275203BD76A1D9D /* NUChartLinearInterpolator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF7A44EFFFC0D65E6C5CE4D435884B /* NUChartLinearInterpolator.m */; };
-		7D1314CBDEA32AB5251F4D694C024A8E /* NUCharts-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 28E316C8A334FF8491F91770DD3D013A /* NUCharts-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7D3BE9904C49521C4C34409812F17829 /* NUChartRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = F71E08A9C61C1046C63910BB2F90E234 /* NUChartRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A12E80DE4365924008E62312034CC64 /* NUCharts-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 68559922C27971F56F7D22B18A2AF11B /* NUCharts-dummy.m */; };
 		83FA429634DF5ACFE4355FA4132BCC05 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3980E01C213ECEDEABAC38C1CFD3946D /* ViewController+MASAdditions.m */; };
-		8DEDA031D6FCCB889A37F77EDB55B9BF /* NUChartLinearInterpolator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B4B2C8690DA932F131B45DA587D1B2D /* NUChartLinearInterpolator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9134FA2FC116B77C823DCAE18646AD06 /* NUChartProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FE67DBBD0E36748F4C1D697383F78EC /* NUChartProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87234DA6B5B788A15F3E3665355C986F /* NUChartLineRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B4F17BF429DD1E9C35298B1AB34CE7 /* NUChartLineRenderer.m */; };
 		95F38B253E62525CC55EFFA47BDD079D /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3818136FED67BD32E3A7FAEDE4F68F /* MASConstraintMaker.m */; };
+		9769416987B6A5D561A060CFCBC070DB /* NUChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = B59276286FFC3AA5789E4CD17584D41F /* NUChartData.m */; };
 		9C56F82544D73673FC3A918FA3ED0A6A /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0925CC604B01F156279E8952DDE3EDDB /* MASViewAttribute.m */; };
+		A2F0C2FD691E78F6ECFD8E1661EE5F1F /* NUChartFlatYBezierInterpolator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB63DE2249B52E4FF431CA0A08DC6A /* NUChartFlatYBezierInterpolator.m */; };
 		A30195AF7E9E75DC2ABB0BCC48244046 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4875E63FFAFF84A3CDFE99F28B551E /* MASViewConstraint.m */; };
-		A5FA3CBCB6D0AC9EBCB6021D0C976DF0 /* NUChartData.h in Headers */ = {isa = PBXBuildFile; fileRef = 7059BA24F10599CDDFA370161252C600 /* NUChartData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A65A973EEC919DB0C61C0124ABA45FF6 /* Masonry-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC8E35EDBC629D62166DD797E6DE52 /* Masonry-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD48CE47A6023CFDD8418D29AAB186D8 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0A25DD6F58D072A4ACFC92D9237BF /* View+MASAdditions.m */; };
 		AF51CE6F828399B4CAA32666182086D3 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C6D5C71A7A4B3156186EC98A377E8543 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B863501E83C8E8967261060229E3B07E /* NUChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76183891BB408DE369D9F02A40781CE9 /* NUChartData.m */; };
+		B5175763BD4BF30F808DBF6E3D864CCE /* NUChartLineRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DBEB928D872B208C96EEA99F9F8DD958 /* NUChartLineRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B9698C22D58AB7A39816975E22F49057 /* NUChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = C6674181D500F7778E5E0D916D29AE09 /* NUChartView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1B483470175E915F533437CCCC21290 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 986CB32629319F7F2256662716334944 /* MASConstraint.m */; };
 		C246E48ABEA4F6963D5E8E15D79F1DC4 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 611E26C24600589F4729E5EF510272FB /* MASLayoutConstraint.m */; };
+		C276DD37B5AB22299AFBA07596C09A62 /* NUChartProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 3677C13C5573BA8CD979932F607B4A3A /* NUChartProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6ACED30B76CF52BEB798A320CBF0B34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */; };
+		C7F56A080CB5D3FA9E7AF3AB56470687 /* NUChartPointInterpolator.h in Headers */ = {isa = PBXBuildFile; fileRef = A5AB9D669C535693476F2BE4669505DC /* NUChartPointInterpolator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFD0D6B64F5AA471EBB5B86C16CB325D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
 		D00212A2142350D22692D6EDECEFB48A /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A214B89738295B4A4B00EEB1960E8865 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		D11F2C1C9F89043AE6690329039CF10D /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 96DCAB46CA2931B8140F2639F17404AF /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D2B1CB1E0C0ECEE49477877F48B704C4 /* NUChartRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 395605A7184BF411D215C16E2DC97EB8 /* NUChartRenderer.m */; };
-		D5F71EABA9A790AD7E08B816F9438FC0 /* NUChartFlatYBezierInterpolator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D96E80EB4D7B94AE83873B4B24BB466 /* NUChartFlatYBezierInterpolator.m */; };
+		D97E6B5B5325BEEFE5FEEC422F01858C /* NUChartPointRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AE586A63675A5CC45C0663CFE8BB08E /* NUChartPointRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCD8D73BCE673D670BAB2672D57D2F70 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = ECBBB506D4D551AB1A637EE3145A459E /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD89DF835681D08EABA793D61E60D284 /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F8187F5CAD09C6C6B2B54C65B4A807C9 /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF2180D987044D2038DC6207A2F6203C /* Pods-NUCharts_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F1AF61923466E4F8CAB8198142614FF /* Pods-NUCharts_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E0BBEA076160D71EC938B733F5348AC1 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 61881F60AB333EA86CE7881063A4BA60 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E641EBCA8FC60CDC04C4C12A25D5B887 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F69E835336330FF06E7268D32D667C9 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E73CD1A547298B87A941F7D37212DBDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
-		EA0767A4F1BDCCDCEA8E0AE06E5A7024 /* NUCharts-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 68559922C27971F56F7D22B18A2AF11B /* NUCharts-dummy.m */; };
-		F1F1D11D51A4B87B552DF30220C42AA8 /* NUChartFlatYBezierInterpolator.h in Headers */ = {isa = PBXBuildFile; fileRef = 28FCC91DDC501EE5E9CCA18393105ED9 /* NUChartFlatYBezierInterpolator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EB65EB27A4980F2BBDD58952B955D4A9 /* NUChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 0915298CBE6B3E948F16D74E9FEEA628 /* NUChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F679E99C99A0142F9C18487EE4957661 /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 77F2CF8861113B6F7AAE7EA65C6A7C1B /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7DE6FBFAC50DD8F8937889527A0A36C /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE937DE71A73D4B7779FF934EC2373E2 /* Masonry-dummy.m */; };
-		FDC95C230E91F2F36571F9355A720937 /* NUChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = C6674181D500F7778E5E0D916D29AE09 /* NUChartView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9420F892382CE7CEBDCDF9CA92F3E11 /* NUCharts-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 28E316C8A334FF8491F91770DD3D013A /* NUCharts-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF89B0859634FB5547D4DDC8413B4CAD /* NUChartAxis.h in Headers */ = {isa = PBXBuildFile; fileRef = AD42F00A63420F025BE782142AEAB245 /* NUChartAxis.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,35 +82,39 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E8FD84CB8C849486F72F96130C782DEB;
+			remoteGlobalIDString = 67C354D2A9B1C3292E049793046BA48E;
 			remoteInfo = NUCharts;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02B1822821F5F7514F4C78CFBEADD385 /* NUChartLinearInterpolator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartLinearInterpolator.m; sourceTree = "<group>"; };
 		0915298CBE6B3E948F16D74E9FEEA628 /* NUChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChart.h; sourceTree = "<group>"; };
 		0925CC604B01F156279E8952DDE3EDDB /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
-		0B4B2C8690DA932F131B45DA587D1B2D /* NUChartLinearInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartLinearInterpolator.h; sourceTree = "<group>"; };
 		13FC8E35EDBC629D62166DD797E6DE52 /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
+		1AAB63DE2249B52E4FF431CA0A08DC6A /* NUChartFlatYBezierInterpolator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartFlatYBezierInterpolator.m; sourceTree = "<group>"; };
+		1AE586A63675A5CC45C0663CFE8BB08E /* NUChartPointRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartPointRenderer.h; sourceTree = "<group>"; };
 		1F0183E721D7FD6AF70B4A911C1B1B95 /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
+		1F1CD072FE9F0BCEDB8EEB46CB86E726 /* NUChartBaseInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartBaseInterpolator.h; sourceTree = "<group>"; };
 		28E316C8A334FF8491F91770DD3D013A /* NUCharts-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NUCharts-umbrella.h"; sourceTree = "<group>"; };
-		28FCC91DDC501EE5E9CCA18393105ED9 /* NUChartFlatYBezierInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartFlatYBezierInterpolator.h; sourceTree = "<group>"; };
+		2C333799C16DBE784BF2D40412376114 /* NUChartBaseInterpolator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartBaseInterpolator.m; sourceTree = "<group>"; };
 		2F69E835336330FF06E7268D32D667C9 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
 		3027ECF3675B7D92CFE998E7807ED8BD /* Masonry.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Masonry.modulemap; sourceTree = "<group>"; };
 		303B58A2959C8EEE96799AD558DDA1D3 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
 		30AE6A9A09BF755C31EA46FD4866833B /* Pods-NUCharts_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NUCharts_Example-resources.sh"; sourceTree = "<group>"; };
 		35AFEBC13BDBF91BA3B656794428020C /* NUChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartView.m; sourceTree = "<group>"; };
+		3677C13C5573BA8CD979932F607B4A3A /* NUChartProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartProtocols.h; sourceTree = "<group>"; };
 		374C3B44F85DB6AD338517B5CC96C17A /* Pods-NUCharts_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NUCharts_Example-frameworks.sh"; sourceTree = "<group>"; };
 		3798CD594BA6D3AC6F7CB78E999B0B4E /* NUCharts-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NUCharts-prefix.pch"; sourceTree = "<group>"; };
-		395605A7184BF411D215C16E2DC97EB8 /* NUChartRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartRenderer.m; sourceTree = "<group>"; };
 		3980E01C213ECEDEABAC38C1CFD3946D /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		44C402DD939330DC54D2F0991F8EF5D3 /* NUChartLinearInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartLinearInterpolator.h; sourceTree = "<group>"; };
 		4BA634F7D3F862911F9E42D9BCBC21FE /* Pods-NUCharts_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NUCharts_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		4F1AF61923466E4F8CAB8198142614FF /* Pods-NUCharts_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NUCharts_Example-umbrella.h"; sourceTree = "<group>"; };
+		5327A7B473E0225ADEE5B219817EEE76 /* NUChartData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartData.h; sourceTree = "<group>"; };
 		537638D0C329C86D4ED401237F5D895F /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
 		5A649F9297535214EF97548C9EA9FA33 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
 		5B03AD4DA16649A31002D46BC6165FDA /* Pods_NUCharts_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NUCharts_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F828C12E9BAEB3C1D900AF3A76F8DC2 /* Pods-NUCharts_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NUCharts_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		5FE67DBBD0E36748F4C1D697383F78EC /* NUChartProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartProtocols.h; sourceTree = "<group>"; };
 		611E26C24600589F4729E5EF510272FB /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
 		61566C382C243747AAD6C712B55BC479 /* Pods-NUCharts_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NUCharts_Tests-dummy.m"; sourceTree = "<group>"; };
 		61881F60AB333EA86CE7881063A4BA60 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
@@ -110,43 +125,50 @@
 		69E37234C06AE0DFF50BA46DBDEBC3A2 /* Pods-NUCharts_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NUCharts_Tests-umbrella.h"; sourceTree = "<group>"; };
 		6E4875E63FFAFF84A3CDFE99F28B551E /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
 		6F9F11F4CF3E284C81DC7BF7DA1DBA70 /* Pods-NUCharts_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NUCharts_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7059BA24F10599CDDFA370161252C600 /* NUChartData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartData.h; sourceTree = "<group>"; };
-		76183891BB408DE369D9F02A40781CE9 /* NUChartData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartData.m; sourceTree = "<group>"; };
 		77F2CF8861113B6F7AAE7EA65C6A7C1B /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
 		79BEFB59B86F59C579FF7594DCF78FEB /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		7A7A46322748FA434C5FC93AD328C839 /* Pods-NUCharts_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NUCharts_Example.release.xcconfig"; sourceTree = "<group>"; };
 		7BE9992EEC9AA6C7CA9DDEE9689C4BAC /* NUCharts.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = NUCharts.modulemap; sourceTree = "<group>"; };
-		7D96E80EB4D7B94AE83873B4B24BB466 /* NUChartFlatYBezierInterpolator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartFlatYBezierInterpolator.m; sourceTree = "<group>"; };
 		7EC0A25DD6F58D072A4ACFC92D9237BF /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
 		7F44A621BE24B87AEF75DD7193846188 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FC6B38D5410E7AB31DC4D9ED4818E5A /* Pods-NUCharts_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NUCharts_Example-dummy.m"; sourceTree = "<group>"; };
+		809964304FED49918D943D4BF3204C08 /* NUChartBaseRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartBaseRenderer.m; sourceTree = "<group>"; };
 		8206001C6CB215536E34FF7223B3D087 /* Pods-NUCharts_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NUCharts_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		8F0A932C32238E1E024EF00284796D22 /* NUChartPointInterpolator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartPointInterpolator.m; sourceTree = "<group>"; };
 		93737700D19FB7CB4823F6778FCB2235 /* NUCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NUCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96DCAB46CA2931B8140F2639F17404AF /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
 		986CB32629319F7F2256662716334944 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		9C876AE0BF3E5130710558FFF6E7A3A1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CEF7A44EFFFC0D65E6C5CE4D435884B /* NUChartLinearInterpolator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartLinearInterpolator.m; sourceTree = "<group>"; };
 		A02D339E60E114FCC992372E93245BA1 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
 		A214B89738295B4A4B00EEB1960E8865 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A5AB9D669C535693476F2BE4669505DC /* NUChartPointInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartPointInterpolator.h; sourceTree = "<group>"; };
 		AAEE0691C97E3534BA3B29D71053F7E1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD04C760F0EB4FE7B23D85D56145A97F /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
+		AD42F00A63420F025BE782142AEAB245 /* NUChartAxis.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartAxis.h; sourceTree = "<group>"; };
 		B1C550CDA10D592ABB6A0383A3509F05 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		B59276286FFC3AA5789E4CD17584D41F /* NUChartData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartData.m; sourceTree = "<group>"; };
 		B5A440FE2174CBDA4D0DE567941F4EDF /* Pods-NUCharts_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-NUCharts_Example.modulemap"; sourceTree = "<group>"; };
+		B65D34BDF79A4913F3606738BF9AA4CB /* NUChartAxis.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartAxis.m; sourceTree = "<group>"; };
+		B7B4F17BF429DD1E9C35298B1AB34CE7 /* NUChartLineRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartLineRenderer.m; sourceTree = "<group>"; };
+		BCAB061385D9D67DBCE47B3798379845 /* NUChartPointRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NUChartPointRenderer.m; sourceTree = "<group>"; };
 		C484EF8499F67EC81CA7E27930A63CDC /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
 		C4DC73AD02762B20A566D221E5F00A67 /* NUCharts.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NUCharts.xcconfig; sourceTree = "<group>"; };
 		C6674181D500F7778E5E0D916D29AE09 /* NUChartView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartView.h; sourceTree = "<group>"; };
+		C6B3272E0E2F9BDEF8FE4CFF24280329 /* NUChartBaseInterpolator+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NUChartBaseInterpolator+Private.h"; sourceTree = "<group>"; };
 		C6D5C71A7A4B3156186EC98A377E8543 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		CD9460636A228DA2C8F5EC4A2AB7EBB6 /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
 		CFFB09B168C735B350D07AE9F313EA8B /* Pods-NUCharts_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NUCharts_Tests-resources.sh"; sourceTree = "<group>"; };
+		DAC8A850D89C6A55BDD830826FDA0406 /* NUChartBaseRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartBaseRenderer.h; sourceTree = "<group>"; };
+		DBEB928D872B208C96EEA99F9F8DD958 /* NUChartLineRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartLineRenderer.h; sourceTree = "<group>"; };
 		E038553041690A6C60912075999E39F4 /* Pods-NUCharts_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NUCharts_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E45EF8673077FAF9007A6BA9D9225714 /* Pods_NUCharts_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NUCharts_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		ECBBB506D4D551AB1A637EE3145A459E /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
 		EEE5821F95642FA47E916885529E9CFD /* Pods-NUCharts_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-NUCharts_Tests.modulemap"; sourceTree = "<group>"; };
 		EEFDF48CB739A5323C89075C0E9CE287 /* Pods-NUCharts_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NUCharts_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F71E08A9C61C1046C63910BB2F90E234 /* NUChartRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartRenderer.h; sourceTree = "<group>"; };
+		F564D4BF1044E2CCE95B235237A2924A /* NUChartFlatYBezierInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NUChartFlatYBezierInterpolator.h; sourceTree = "<group>"; };
 		F7D8AB6F7CBEC2C3D09BBF757383022B /* Pods-NUCharts_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NUCharts_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F8187F5CAD09C6C6B2B54C65B4A807C9 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		FAF7EEE1998AEFFAB707F3C65CECFA55 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,20 +186,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3776514BCBF00295BFCE788D710FCEA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B6844B00D8DA1B5E51B65CBF46AA556 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		39E0CF5B11CC74096DE6216D0EE0169B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3E753C4C5C7631E962401C456802D57A /* Foundation.framework in Frameworks */,
 				C6ACED30B76CF52BEB798A320CBF0B34 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		63EDD6B143794E63DA33B9D9BF224B36 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3804908894262DE3D0E8F6C5E3D9AC46 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,21 +227,30 @@
 			isa = PBXGroup;
 			children = (
 				0915298CBE6B3E948F16D74E9FEEA628 /* NUChart.h */,
-				611B63BCB3F37840147C78F5AAC7439E /* Model */,
+				9A04CEF17819B3D29A5B07D45022AC7F /* Model */,
 				2C4D66701EA7406B8B79ECE9BE2D0E69 /* View */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		28341D6E8F258604E48E9AFC7AA0C443 /* Interpolators */ = {
+		21E9B61FDFD27385CDAAF254A94275B2 /* NUChartPointInterpolator */ = {
 			isa = PBXGroup;
 			children = (
-				28FCC91DDC501EE5E9CCA18393105ED9 /* NUChartFlatYBezierInterpolator.h */,
-				7D96E80EB4D7B94AE83873B4B24BB466 /* NUChartFlatYBezierInterpolator.m */,
-				0B4B2C8690DA932F131B45DA587D1B2D /* NUChartLinearInterpolator.h */,
-				9CEF7A44EFFFC0D65E6C5CE4D435884B /* NUChartLinearInterpolator.m */,
+				A5AB9D669C535693476F2BE4669505DC /* NUChartPointInterpolator.h */,
+				8F0A932C32238E1E024EF00284796D22 /* NUChartPointInterpolator.m */,
 			);
-			path = Interpolators;
+			path = NUChartPointInterpolator;
+			sourceTree = "<group>";
+		};
+		236006833F5AB33CFF70B0F7305C13A5 /* Renderers */ = {
+			isa = PBXGroup;
+			children = (
+				DAC8A850D89C6A55BDD830826FDA0406 /* NUChartBaseRenderer.h */,
+				809964304FED49918D943D4BF3204C08 /* NUChartBaseRenderer.m */,
+				67210D006D134F28923E4D7283964DF0 /* NUChartLineRenderer */,
+				E56E83B9CEFA03653DD8A48BA5B59DF4 /* NUChartPointRenderer */,
+			);
+			path = Renderers;
 			sourceTree = "<group>";
 		};
 		2C4D66701EA7406B8B79ECE9BE2D0E69 /* View */ = {
@@ -268,17 +299,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		611B63BCB3F37840147C78F5AAC7439E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				5FE67DBBD0E36748F4C1D697383F78EC /* NUChartProtocols.h */,
-				DF7D164930A21280E3B470E71FFBD4C1 /* Data */,
-				28341D6E8F258604E48E9AFC7AA0C443 /* Interpolators */,
-				D9879E3FC7D90AB7A5113CD5B2812FB3 /* Renderers */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		621DBF02BE5DFAD647033EDF2F8ABBEF /* Pods-NUCharts_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,12 +317,43 @@
 			path = "Target Support Files/Pods-NUCharts_Example";
 			sourceTree = "<group>";
 		};
+		64AD316A27C90C20AB573655C9CECDC3 /* Interpolators */ = {
+			isa = PBXGroup;
+			children = (
+				1F1CD072FE9F0BCEDB8EEB46CB86E726 /* NUChartBaseInterpolator.h */,
+				2C333799C16DBE784BF2D40412376114 /* NUChartBaseInterpolator.m */,
+				C6B3272E0E2F9BDEF8FE4CFF24280329 /* NUChartBaseInterpolator+Private.h */,
+				6A8A250BEA567194E22ABAF8D9CE6897 /* NUChartFlatYBezierInterpolator */,
+				9A9C4BB82639D41E14E24025A66FB59D /* NUChartLinearInterpolator */,
+				21E9B61FDFD27385CDAAF254A94275B2 /* NUChartPointInterpolator */,
+			);
+			path = Interpolators;
+			sourceTree = "<group>";
+		};
+		67210D006D134F28923E4D7283964DF0 /* NUChartLineRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				DBEB928D872B208C96EEA99F9F8DD958 /* NUChartLineRenderer.h */,
+				B7B4F17BF429DD1E9C35298B1AB34CE7 /* NUChartLineRenderer.m */,
+			);
+			path = NUChartLineRenderer;
+			sourceTree = "<group>";
+		};
 		6A0272DE634B79D5DB1C384EE88FC50F /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
 				AC024DE66313D077875957BD88D5A3FC /* NUCharts */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		6A8A250BEA567194E22ABAF8D9CE6897 /* NUChartFlatYBezierInterpolator */ = {
+			isa = PBXGroup;
+			children = (
+				F564D4BF1044E2CCE95B235237A2924A /* NUChartFlatYBezierInterpolator.h */,
+				1AAB63DE2249B52E4FF431CA0A08DC6A /* NUChartFlatYBezierInterpolator.m */,
+			);
+			path = NUChartFlatYBezierInterpolator;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -315,6 +366,26 @@
 				5561AD084AF7009E3AC32B306E621181 /* Products */,
 				0050C4A3CA89E0A446E760AB9C08DB5F /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		9A04CEF17819B3D29A5B07D45022AC7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3677C13C5573BA8CD979932F607B4A3A /* NUChartProtocols.h */,
+				D643E4E725C1CC09ABAB41E4D41DC717 /* Data */,
+				64AD316A27C90C20AB573655C9CECDC3 /* Interpolators */,
+				236006833F5AB33CFF70B0F7305C13A5 /* Renderers */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9A9C4BB82639D41E14E24025A66FB59D /* NUChartLinearInterpolator */ = {
+			isa = PBXGroup;
+			children = (
+				44C402DD939330DC54D2F0991F8EF5D3 /* NUChartLinearInterpolator.h */,
+				02B1822821F5F7514F4C78CFBEADD385 /* NUChartLinearInterpolator.m */,
+			);
+			path = NUChartLinearInterpolator;
 			sourceTree = "<group>";
 		};
 		A2A20986957FCCEF3865AFC2DAE207A8 /* Masonry */ = {
@@ -374,22 +445,24 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		D9879E3FC7D90AB7A5113CD5B2812FB3 /* Renderers */ = {
+		D643E4E725C1CC09ABAB41E4D41DC717 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				F71E08A9C61C1046C63910BB2F90E234 /* NUChartRenderer.h */,
-				395605A7184BF411D215C16E2DC97EB8 /* NUChartRenderer.m */,
-			);
-			path = Renderers;
-			sourceTree = "<group>";
-		};
-		DF7D164930A21280E3B470E71FFBD4C1 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				7059BA24F10599CDDFA370161252C600 /* NUChartData.h */,
-				76183891BB408DE369D9F02A40781CE9 /* NUChartData.m */,
+				AD42F00A63420F025BE782142AEAB245 /* NUChartAxis.h */,
+				B65D34BDF79A4913F3606738BF9AA4CB /* NUChartAxis.m */,
+				5327A7B473E0225ADEE5B219817EEE76 /* NUChartData.h */,
+				B59276286FFC3AA5789E4CD17584D41F /* NUChartData.m */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		E56E83B9CEFA03653DD8A48BA5B59DF4 /* NUChartPointRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				1AE586A63675A5CC45C0663CFE8BB08E /* NUChartPointRenderer.h */,
+				BCAB061385D9D67DBCE47B3798379845 /* NUChartPointRenderer.m */,
+			);
+			path = NUChartPointRenderer;
 			sourceTree = "<group>";
 		};
 		E9B49E9D4F6BC02AA78DCF86BCED2145 /* Pods */ = {
@@ -465,18 +538,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7638FF9769449A7500A09C9C0171F639 /* Headers */ = {
+		935C45163F22DCB2204F8AD4D43014B0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75EF519CB2BE595F6F3D71F4E78342FB /* NUChart.h in Headers */,
-				A5FA3CBCB6D0AC9EBCB6021D0C976DF0 /* NUChartData.h in Headers */,
-				F1F1D11D51A4B87B552DF30220C42AA8 /* NUChartFlatYBezierInterpolator.h in Headers */,
-				8DEDA031D6FCCB889A37F77EDB55B9BF /* NUChartLinearInterpolator.h in Headers */,
-				9134FA2FC116B77C823DCAE18646AD06 /* NUChartProtocols.h in Headers */,
-				7D3BE9904C49521C4C34409812F17829 /* NUChartRenderer.h in Headers */,
-				7D1314CBDEA32AB5251F4D694C024A8E /* NUCharts-umbrella.h in Headers */,
-				FDC95C230E91F2F36571F9355A720937 /* NUChartView.h in Headers */,
+				EB65EB27A4980F2BBDD58952B955D4A9 /* NUChart.h in Headers */,
+				FF89B0859634FB5547D4DDC8413B4CAD /* NUChartAxis.h in Headers */,
+				278F298A62801F6139529AB1AF28353B /* NUChartBaseInterpolator+Private.h in Headers */,
+				30B9AE85F77BB30EA2052BDA903D24CE /* NUChartBaseInterpolator.h in Headers */,
+				3D20390654046FD10B3E09847932F75E /* NUChartBaseRenderer.h in Headers */,
+				744815226D32A6F22A9E6B701AD57720 /* NUChartData.h in Headers */,
+				1DF5983410CDB80A61D117139B52E447 /* NUChartFlatYBezierInterpolator.h in Headers */,
+				40B541CE842A285A2997A352DB8DD1C6 /* NUChartLinearInterpolator.h in Headers */,
+				B5175763BD4BF30F808DBF6E3D864CCE /* NUChartLineRenderer.h in Headers */,
+				C7F56A080CB5D3FA9E7AF3AB56470687 /* NUChartPointInterpolator.h in Headers */,
+				D97E6B5B5325BEEFE5FEEC422F01858C /* NUChartPointRenderer.h in Headers */,
+				C276DD37B5AB22299AFBA07596C09A62 /* NUChartProtocols.h in Headers */,
+				F9420F892382CE7CEBDCDF9CA92F3E11 /* NUCharts-umbrella.h in Headers */,
+				B9698C22D58AB7A39816975E22F49057 /* NUChartView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +587,23 @@
 			productReference = E45EF8673077FAF9007A6BA9D9225714 /* Pods_NUCharts_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		67C354D2A9B1C3292E049793046BA48E /* NUCharts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BAD61E2CE3EF789F0A5207311C8D8CF /* Build configuration list for PBXNativeTarget "NUCharts" */;
+			buildPhases = (
+				04427DF38DCEDCEDF18BA1371800DFF4 /* Sources */,
+				3776514BCBF00295BFCE788D710FCEA2 /* Frameworks */,
+				935C45163F22DCB2204F8AD4D43014B0 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NUCharts;
+			productName = NUCharts;
+			productReference = 93737700D19FB7CB4823F6778FCB2235 /* NUCharts.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		A9A83F63385AA43314397B8DD375464B /* Masonry */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C692385904021C81058B89C8E286FF69 /* Build configuration list for PBXNativeTarget "Masonry" */;
@@ -523,23 +619,6 @@
 			name = Masonry;
 			productName = Masonry;
 			productReference = FAF7EEE1998AEFFAB707F3C65CECFA55 /* Masonry.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E8FD84CB8C849486F72F96130C782DEB /* NUCharts */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 03958A4AB0A12EFEDAE1A2CE35A2DA95 /* Build configuration list for PBXNativeTarget "NUCharts" */;
-			buildPhases = (
-				01E4ABA0949C875E136A45711F62F6EA /* Sources */,
-				63EDD6B143794E63DA33B9D9BF224B36 /* Frameworks */,
-				7638FF9769449A7500A09C9C0171F639 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NUCharts;
-			productName = NUCharts;
-			productReference = 93737700D19FB7CB4823F6778FCB2235 /* NUCharts.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		FA84C18A6D3F0A8DB2D20A97AD98721B /* Pods-NUCharts_Example */ = {
@@ -583,7 +662,7 @@
 			projectRoot = "";
 			targets = (
 				A9A83F63385AA43314397B8DD375464B /* Masonry */,
-				E8FD84CB8C849486F72F96130C782DEB /* NUCharts */,
+				67C354D2A9B1C3292E049793046BA48E /* NUCharts */,
 				FA84C18A6D3F0A8DB2D20A97AD98721B /* Pods-NUCharts_Example */,
 				16A351DC2DB208DCC0315A2A38B6FBE9 /* Pods-NUCharts_Tests */,
 			);
@@ -591,16 +670,21 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		01E4ABA0949C875E136A45711F62F6EA /* Sources */ = {
+		04427DF38DCEDCEDF18BA1371800DFF4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B863501E83C8E8967261060229E3B07E /* NUChartData.m in Sources */,
-				D5F71EABA9A790AD7E08B816F9438FC0 /* NUChartFlatYBezierInterpolator.m in Sources */,
-				7B2C3E0AED0FE3682275203BD76A1D9D /* NUChartLinearInterpolator.m in Sources */,
-				D2B1CB1E0C0ECEE49477877F48B704C4 /* NUChartRenderer.m in Sources */,
-				EA0767A4F1BDCCDCEA8E0AE06E5A7024 /* NUCharts-dummy.m in Sources */,
-				31F02E64D7C7C8D5BE04B569A06AA7D1 /* NUChartView.m in Sources */,
+				369783476C5E17E0C549D37151D507EF /* NUChartAxis.m in Sources */,
+				6C5D9E79C29C102A6338A1A4EFAB7142 /* NUChartBaseInterpolator.m in Sources */,
+				4CEC7944E295CFF10B598CD6F964EDEC /* NUChartBaseRenderer.m in Sources */,
+				9769416987B6A5D561A060CFCBC070DB /* NUChartData.m in Sources */,
+				A2F0C2FD691E78F6ECFD8E1661EE5F1F /* NUChartFlatYBezierInterpolator.m in Sources */,
+				72C2572C286CAF5663965ABD8BD38695 /* NUChartLinearInterpolator.m in Sources */,
+				87234DA6B5B788A15F3E3665355C986F /* NUChartLineRenderer.m in Sources */,
+				4EECC466BD889572A10CE18A521D1571 /* NUChartPointInterpolator.m in Sources */,
+				07EF1A742A3E50B637595058EBB3ADE6 /* NUChartPointRenderer.m in Sources */,
+				7A12E80DE4365924008E62312034CC64 /* NUCharts-dummy.m in Sources */,
+				4889DCFCDDD5EF13A32CF556E16C8D9E /* NUChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,7 +728,7 @@
 		79A08F91585FFC13110A4CF1512D1D7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NUCharts;
-			target = E8FD84CB8C849486F72F96130C782DEB /* NUCharts */;
+			target = 67C354D2A9B1C3292E049793046BA48E /* NUCharts */;
 			targetProxy = C72D4ECC1934973AAA29BAEF6EAA6756 /* PBXContainerItemProxy */;
 		};
 		83330F47F7FD6A1ACC79C01B441EFFE7 /* PBXTargetDependency */ = {
@@ -822,6 +906,35 @@
 			};
 			name = Debug;
 		};
+		7A01DEA52E5F8C19B9478995A07D2659 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4DC73AD02762B20A566D221E5F00A67 /* NUCharts.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/NUCharts/NUCharts-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/NUCharts/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/NUCharts/NUCharts.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = NUCharts;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		7E4F8BDAAFFB3A3E87A34A77CA45ED32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A7A46322748FA434C5FC93AD328C839 /* Pods-NUCharts_Example.release.xcconfig */;
@@ -893,35 +1006,6 @@
 			};
 			name = Release;
 		};
-		B3D830773BCD69E7C861BDE8538BB93E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4DC73AD02762B20A566D221E5F00A67 /* NUCharts.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/NUCharts/NUCharts-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/NUCharts/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/NUCharts/NUCharts.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = NUCharts;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		BDABA67E638B44A2E68B5CDF14FD5072 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EEFDF48CB739A5323C89075C0E9CE287 /* Pods-NUCharts_Tests.release.xcconfig */;
@@ -955,7 +1039,7 @@
 			};
 			name = Release;
 		};
-		D4F3967714652CC4DE239323C77C0741 /* Release */ = {
+		EFF39611EA37C5327899C0773F36D0DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4DC73AD02762B20A566D221E5F00A67 /* NUCharts.xcconfig */;
 			buildSettings = {
@@ -987,15 +1071,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03958A4AB0A12EFEDAE1A2CE35A2DA95 /* Build configuration list for PBXNativeTarget "NUCharts" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B3D830773BCD69E7C861BDE8538BB93E /* Debug */,
-				D4F3967714652CC4DE239323C77C0741 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		1E59819F089A7EB07048CE5F5F833514 /* Build configuration list for PBXNativeTarget "Pods-NUCharts_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1019,6 +1094,15 @@
 			buildConfigurations = (
 				269D6FA9702379106EAF064DEF58B700 /* Debug */,
 				BDABA67E638B44A2E68B5CDF14FD5072 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8BAD61E2CE3EF789F0A5207311C8D8CF /* Build configuration list for PBXNativeTarget "NUCharts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A01DEA52E5F8C19B9478995A07D2659 /* Debug */,
+				EFF39611EA37C5327899C0773F36D0DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

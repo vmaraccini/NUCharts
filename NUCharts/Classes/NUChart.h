@@ -11,6 +11,13 @@
 
 #import "NUChartLinearInterpolator.h"
 #import "NUChartFlatYBezierInterpolator.h"
+
+#import "NUChartLineRenderer.h"
+#import "NUChartPointRenderer.h"
+
+#import "NUChartData.h"
+#import "NUChartAxis.h"
+
 #define NUChart_h
 
 
