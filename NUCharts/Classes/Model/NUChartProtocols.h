@@ -8,22 +8,27 @@
 
 #import "NUChartData.h"
 
+#define NU_ABSTRACT_METHOD NSString *errorString = [NSString stringWithFormat:@"You must implement %@ in your subclass of NUChartBaseRenderer", __PRETTY_FUNCTION__];@throw [NSException exceptionWithName:@"Unimplemented method" reason:errorString userInfo:nil];
+
 NS_ASSUME_NONNULL_BEGIN
 
 // Interpolator
 
 @protocol NUChartInterpolator <NSObject>
-- (CGPathRef)pathForData:(NUChartData *)data CF_RETURNS_RETAINED;
+///Override point. Creates and returns a CGPath for the data set
+- (CGPathRef)pathForData:(NUChartData *)data
+                  xRange:(NSRange)xRange
+                  yRange:(NSRange)yRange
+                  bounds:(CGRect)bounds CF_RETURNS_RETAINED;
 @end
 
 // Renderer
 
 @protocol NUChartRenderer <NSObject>
-@property (nonatomic, strong) id<NUChartInterpolator> interpolator;
-@property (nonatomic, strong) UIColor *strokeColor;
-@property (nonatomic, readwrite) CGFloat lineWidth;
-
+///Override point. Renders the data set into the rectangle determined by @c bounds and returns a CAShapeLayer
 - (CAShapeLayer *__nullable)drawData:(NUChartData *)data
+                              xRange:(NSRange)xRange
+                              yRange:(NSRange)yRange
                               bounds:(CGRect)bounds;
 @end
 
