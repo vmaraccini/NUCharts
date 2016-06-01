@@ -7,6 +7,7 @@
 //
 
 #import "NUChartFlatYBezierInterpolator.h"
+#import "NUChartBaseInterpolator+Private.h"
 
 @implementation NUChartFlatYBezierInterpolator
 
@@ -19,29 +20,21 @@
     return self;
 }
 
-#pragma NUChartInterpolator methods
+#pragma mark - Extension points
 
-- (CGPathRef)pathForData:(NUChartData *)data
+- (void)drawPoints:(NSArray<NSValue *> *)points
 {
-    NSAssert(data.xValues.count == data.yValues.count,
-             @"X and Y data should have the same count");
-    NSAssert(data.xValues.count > 2, @"Should have at least 3 points");
+    if (points.count < 3) {
+        self.mutablePath = NULL;
+    }
 
     UIBezierPath *path = [UIBezierPath bezierPath];
 
-    CGPoint previousPoint = CGPointMake(data.xValues[0].floatValue,
-                                                data.yValues[0].floatValue);
-
+    CGPoint previousPoint = CGPointApplyAffineTransform(points[0].CGPointValue, self.scaleTransform);
     [path moveToPoint:previousPoint];
 
-    for (int i = 1; i < data.xValues.count; i++) {
-        NSNumber *x = data.xValues[i];
-        NSNumber *y = data.yValues[i];
-        CGPoint currentPoint = CGPointMake(x.floatValue, y.floatValue);
-
-        NSNumber *xn = data.xValues[i];
-        NSNumber *yn = data.yValues[i];
-        CGPoint nextPoint = CGPointMake(x.floatValue, y.floatValue);
+    for (int i = 1; i < points.count; i++) {
+        CGPoint currentPoint = CGPointApplyAffineTransform(points[i].CGPointValue, self.scaleTransform);;
 
         CGPoint delta = CGPointMake(currentPoint.x - previousPoint.x,
                                     currentPoint.y - previousPoint.y);
@@ -58,7 +51,7 @@
         previousPoint = currentPoint;
     }
 
-    return CFBridgingRetain(path.CGPath);
+    self.mutablePath = CFBridgingRetain(path.CGPath);
 }
 
 @end

@@ -7,11 +7,12 @@
 //
 
 #import "NUChartData.h"
-#import "NUChartProtocols.h"
+#import "NUChartBaseInterpolator.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NUChartLinearInterpolator : NSObject<NUChartInterpolator>
+@interface NUChartLinearInterpolator :  NUChartBaseInterpolator
+
 @end
 
 NS_ASSUME_NONNULL_END
