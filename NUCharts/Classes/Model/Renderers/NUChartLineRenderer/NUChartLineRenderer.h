@@ -8,11 +8,12 @@
 
 #import "NUChartProtocols.h"
 #import "NUChartData.h"
+#import "NUChartBaseRenderer.h"
 #import "NUChartLinearInterpolator.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NUChartRenderer : NSObject<NUChartRenderer>
+@interface NUChartLineRenderer : NUChartBaseRenderer
 
 - (instancetype)initWithInterpolator:(id<NUChartInterpolator>)interpolator NS_DESIGNATED_INITIALIZER;
 
@@ -21,8 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *strokeColor;
 @property (nonatomic, readwrite) CGFloat lineWidth;
 
-- (CAShapeLayer *__nullable)drawData:(NUChartData *)data
-                              bounds:(CGRect)bounds;
+@property (nonatomic, readwrite) NSArray<NSNumber *>* dashPattern;
+@property (nonatomic, readwrite) CGFloat dashPhase;
+
 @end
 
 NS_ASSUME_NONNULL_END
