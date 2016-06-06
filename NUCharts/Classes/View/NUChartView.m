@@ -42,9 +42,8 @@
     return self;
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
+- (void)setBounds:(CGRect)bounds {
+    [super setBounds:bounds];
     [self drawChart];
 }
 
@@ -81,6 +80,10 @@
 #pragma mark - Private
 
 - (void)drawChart {
+    
+    //Remove existing layers
+    [[self.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    
     [self.renderStructures enumerateObjectsUsingBlock:^(NUChartRenderStructure * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CAShapeLayer *shapeLayer = [obj.renderer drawData:obj.data
                                                    xRange:obj.xAxis.range

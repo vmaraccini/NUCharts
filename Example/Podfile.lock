@@ -1,19 +1,29 @@
 PODS:
   - Masonry (1.0.0)
+  - NUAnimationKit (0.2.4.6)
   - NUCharts (0.1.0)
 
 DEPENDENCIES:
   - Masonry
+  - NUAnimationKit (from `git@github.com:nubank/NUAnimationKit.git`)
   - NUCharts (from `../`)
 
 EXTERNAL SOURCES:
+  NUAnimationKit:
+    :git: git@github.com:nubank/NUAnimationKit.git
   NUCharts:
     :path: "../"
 
+CHECKOUT OPTIONS:
+  NUAnimationKit:
+    :commit: 364f7acf8d0b30508e6774c16bd445433faf9b24
+    :git: git@github.com:nubank/NUAnimationKit.git
+
 SPEC CHECKSUMS:
   Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
+  NUAnimationKit: bfe88e6580cdbc8228c4317805882642ea6128b0
   NUCharts: 4873aa66d4a6e62ab2d78340b072f5202b799d46
 
-PODFILE CHECKSUM: 9c84ced7e6861c43a08242f4151d33120eb9facd
+PODFILE CHECKSUM: bfd50fad85eb2373f4882e13f696699ff96e1695
 
 COCOAPODS: 1.0.0

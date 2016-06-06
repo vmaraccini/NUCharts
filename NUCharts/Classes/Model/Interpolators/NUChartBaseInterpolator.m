@@ -29,12 +29,10 @@
         CGPoint point = wrapped.CGPointValue;
         if ([self point:point.x withinRange:xRange] &&
             [self point:point.y withinRange:yRange]) {
-            [filteredData addObject:wrapped];
+            
+            CGFloat invertedPoint = NSMaxRange(yRange) - point.y;
+            [filteredData addObject:[NSNumber valueWithCGPoint:CGPointMake(point.x, invertedPoint)]];
         }
-    }
-
-    if (filteredData.count < 2) {
-        return NULL;
     }
 
     self.mutablePath = CGPathCreateMutable();

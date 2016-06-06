@@ -1,0 +1,6 @@
+framework module NUAnimationKit {
+  umbrella header "NUAnimationKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -19,11 +19,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) id<NUChartInterpolator> interpolator;
 
+//Line properties
 @property (nonatomic, strong) UIColor *strokeColor;
+@property (nonatomic, readwrite) CGFloat strokeEnd;
 @property (nonatomic, readwrite) CGFloat lineWidth;
-
 @property (nonatomic, readwrite) NSArray<NSNumber *>* dashPattern;
 @property (nonatomic, readwrite) CGFloat dashPhase;
+
+- (void)setStrokeEnd:(CGFloat)strokeEnd animated:(BOOL)animated;
+
+//Animations
+- (void)animateDrawAlongPathWithDuration:(CGFloat)duration
+                          timingFunction:(CAMediaTimingFunction *)animationTimingFunction;
+//- (void)animateBuildX;
+//- (void)animateBuildY;
+//- (void)animateBuildXY;
 
 @end
 

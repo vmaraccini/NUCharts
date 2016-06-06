@@ -17,4 +17,15 @@
 @property (nonatomic, strong) UIColor *strokeColor;
 @property (nonatomic, strong) UIColor *fillColor;
 
+- (void)setDiameter:(CGFloat)diameter animated:(BOOL)animated;
+
+///The animation duration. Defaults to 0.5 s
+@property (nonatomic, readwrite) CGFloat animationDuration;
+
+///The animation timing function. Defaults to kCAMediaTimingFunctionEaseInEaseOut
+@property (nonatomic, readwrite) CAMediaTimingFunction *animationTimingFunction;
+
+- (void)animateFade;
+- (void)animateScale;
+
 @end

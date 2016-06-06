@@ -21,6 +21,7 @@
 
     CAShapeLayer *shape = [CAShapeLayer layer];
     shape.path = path;
+    
     return shape;
 }
 

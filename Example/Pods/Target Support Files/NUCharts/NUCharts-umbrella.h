@@ -11,7 +11,7 @@
 #import "NUChartBaseRenderer.h"
 #import "NUChartLineRenderer.h"
 #import "NUChartPointRenderer.h"
-#import "NUChart.h"
+#import "NUCharts.h"
 #import "NUChartView.h"
 
 FOUNDATION_EXPORT double NUChartsVersionNumber;

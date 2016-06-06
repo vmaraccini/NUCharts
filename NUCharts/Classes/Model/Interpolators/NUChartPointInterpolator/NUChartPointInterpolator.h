@@ -9,5 +9,7 @@
 #import "NUChartBaseInterpolator.h"
 
 @interface NUChartPointInterpolator : NUChartBaseInterpolator
+
 @property (nonatomic, readwrite) CGFloat diameter;
+
 @end

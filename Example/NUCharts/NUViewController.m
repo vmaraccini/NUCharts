@@ -8,33 +8,92 @@
 
 #import "NUViewController.h"
 
-#import <NUCharts/NUChart.h>
+#import <NUCharts/NUCharts.h>
 #import <Masonry/Masonry.h>
+#import <NUAnimationKit/NUAnimationController.h>
 
 @interface NUViewController ()
+@property (nonatomic, strong) NUChartView *chartView;
+@property (nonatomic, strong) NUChartRenderStructure *bezierStruct;
+@property (nonatomic, strong) NUChartRenderStructure *startPointStruct;
+@property (nonatomic, strong) NUChartRenderStructure *endPointStruct;
 
+@property (nonatomic, strong) NUAnimationController *animator;
 @end
 
 @implementation NUViewController
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self createChart];
+    NUChartPointRenderer *startPointRenderer = (NUChartPointRenderer *)self.startPointStruct.renderer;
+    NUChartPointRenderer *endPointRenderer = (NUChartPointRenderer *)self.endPointStruct.renderer;
+    NUChartLineRenderer *lineRenderer = (NUChartLineRenderer *)self.bezierStruct.renderer;
+
+    self.animator = [NUAnimationController new];
+
+    self.animator.initializationBlock = ^{
+        startPointRenderer.diameter = 1e-3;
+        endPointRenderer.diameter = 1e-3;
+        [lineRenderer setStrokeEnd:0.f animated:NO];
+    };
+
+    [self.animator addAnimations:^{
+        startPointRenderer.diameter = 8;
+    }].withDuration(0.3)
+    .withCurve(UIViewAnimationCurveEaseOut);
+
+    [self.animator addAnimations:^{
+        lineRenderer.strokeEnd = 1.f;
+    }]
+    .withDuration(0.75)
+    .withCurve(UIViewAnimationCurveEaseOut);
+
+    [self.animator addAnimations:^{
+        endPointRenderer.diameter = 8;
+    }].withDuration(0.15);
+
+    self.animator.initializationBlock();
+    [super viewDidAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 
-    NUChartView *view = [NUChartView new];
+    UIButton *startButton = [UIButton new];
+    [startButton setTitle:@"Start" forState:UIControlStateNormal];
+    [startButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [startButton addTarget:self
+                    action:@selector(startAnimation)
+          forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:startButton];
 
-    NUChartRenderStructure *bezierStruct = [self addBezierCurve:view];
-    [self addAverageLine:view
-            atSameAxisAs:bezierStruct];
-    [self addPoints:view];
+    [startButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-100);
+        make.centerX.equalTo(self.view);
+    }];
+}
 
-    [self.view addSubview:view];
-    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+- (void)startAnimation {
+    [self.animator startAnimationChain];
+}
+
+- (void)createChart {
+    self.chartView = [NUChartView new];
+    [self.view addSubview:self.chartView];
+
+    self.bezierStruct = [self addBezierCurve:self.chartView];
+    [self addAverageLine:self.chartView atSameAxisAs:self.bezierStruct];
+    self.startPointStruct = [self addStartPoint:self.chartView
+                                   atSameAxisAs:self.bezierStruct];
+    self.endPointStruct = [self addEndPoint:self.chartView
+                               atSameAxisAs:self.bezierStruct];
+
+    [self.chartView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
         make.size.mas_equalTo(200);
     }];
-
 }
 
 - (NUChartRenderStructure *)addBezierCurve:(NUChartView *)view
@@ -45,6 +104,7 @@
     NUChartLineRenderer *renderer = [NUChartLineRenderer new];
     renderer.lineWidth = 2;
     renderer.interpolator = [NUChartFlatYBezierInterpolator new];
+
     return [view addDataSet:data
                withRenderer:renderer];
 }
@@ -58,28 +118,42 @@
     NUChartLineRenderer *renderer = [NUChartLineRenderer new];
     renderer.lineWidth = 1;
     renderer.dashPattern = @[@2, @5];
+    renderer.strokeColor = [UIColor redColor];
     return [view addDataSet:average
                withRenderer:renderer
                     toAxisX:sibling.xAxis
                       axisY:sibling.yAxis];
 }
 
-- (NUChartRenderStructure *)addPoints:(NUChartView *)view
+- (NUChartRenderStructure *)addStartPoint:(NUChartView *)view
+                             atSameAxisAs:(NUChartRenderStructure *)sibling
 {
-    NUChartData *points = [[NUChartData alloc] initWithxValues:@[@(0),@(150)]
-                                                       yValues:@[@(0),@(100)]];
+    NUChartData *points = [[NUChartData alloc] initWithxValues:@[@(0)]
+                                                       yValues:@[@(0)]];
 
     NUChartPointRenderer *renderer = [NUChartPointRenderer new];
     renderer.diameter = 8;
     renderer.fillColor = [UIColor blueColor];
     return [view addDataSet:points
-               withRenderer:renderer];
+               withRenderer:renderer
+                    toAxisX:sibling.xAxis
+                      axisY:sibling.yAxis];
 }
 
-- (void)didReceiveMemoryWarning
+- (NUChartRenderStructure *)addEndPoint:(NUChartView *)view
+                           atSameAxisAs:(NUChartRenderStructure *)sibling
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NUChartData *points = [[NUChartData alloc] initWithxValues:@[@(150)]
+                                                       yValues:@[@(100)]];
+
+    NUChartPointRenderer *renderer = [NUChartPointRenderer new];
+    renderer.diameter = 8;
+    renderer.fillColor = [UIColor blueColor];
+    return [view addDataSet:points
+               withRenderer:renderer
+                    toAxisX:sibling.xAxis
+                      axisY:sibling.yAxis];
 }
+
 
 @end

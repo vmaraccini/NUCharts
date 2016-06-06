@@ -10,7 +10,14 @@
 #import "NUChartPointInterpolator.h"
 
 @interface NUChartPointRenderer ()
+
+@property (nonatomic, strong) NUChartData *data;
+@property (nonatomic) NSRange xRange;
+@property (nonatomic) NSRange yRange;
+@property (nonatomic) CGRect bounds;
+
 @property (nonatomic, strong) NUChartPointInterpolator *interpolator;
+@property (nonatomic, strong) CAShapeLayer *layer;
 @end
 
 @implementation NUChartPointRenderer
@@ -27,10 +34,13 @@
 - (void)initialize
 {
     _interpolator = [NUChartPointInterpolator new];
-    self.diameter = 2.f;
+    _animationDuration = 0.5;
+    _animationTimingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
     _strokeWidth = 1.f;
     _strokeColor = [UIColor blackColor];
+
+    self.diameter = 2.f;
 }
 
 - (CAShapeLayer *)drawData:(NUChartData *)data
@@ -38,23 +48,67 @@
                     yRange:(NSRange)yRange
                     bounds:(CGRect)bounds
 {
+    _data = data;
+    _xRange = xRange;
+    _yRange = yRange;
+    _bounds = bounds;
+
     CGPathRef path = [self.interpolator pathForData:data
                                              xRange:xRange
                                              yRange:yRange
                                              bounds:bounds];
 
-    CAShapeLayer *pointLayer = [self drawPath:path
-                                   withxRange:xRange
-                                       yRange:yRange
-                                       bounds:bounds];
+    self.layer = [self drawPath:path
+                     withxRange:xRange
+                         yRange:yRange
+                         bounds:bounds];
+    self.layer.delegate = self;
 
-    pointLayer.fillColor = self.fillColor.CGColor;
-    pointLayer.lineWidth = self.strokeWidth;
-    pointLayer.strokeColor = self.strokeColor.CGColor;
+    self.layer.fillColor = self.fillColor.CGColor;
+    self.layer.lineWidth = self.strokeWidth;
+    self.layer.strokeColor = self.strokeColor.CGColor;
 
-    return pointLayer;
+    return self.layer;
 }
 
+- (void)updatePath {
+    self.layer.path = [self.interpolator pathForData:self.data
+                                              xRange:self.xRange
+                                              yRange:self.yRange
+                                              bounds:self.bounds];
+}
+
+-(id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event {
+    if ([event isEqualToString:@"path"]) {
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:event];
+        animation.fromValue = (__bridge id _Nullable)(self.layer.path);
+        return animation;
+    }
+    return nil;
+}
+
+#pragma mark - Animations
+
+- (void)animateScale
+{
+    //Generate a small path
+    self.interpolator.diameter = 0;
+    CGPathRef smallPath = [self.interpolator pathForData:self.data
+                                                  xRange:self.xRange
+                                                  yRange:self.yRange
+                                                  bounds:self.bounds];
+    self.interpolator.diameter = self.diameter;
+
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
+    animation.duration = self.animationDuration;
+    animation.timingFunction = self.animationTimingFunction;
+    animation.fromValue = (__bridge id _Nullable)(smallPath);
+    animation.toValue = (__bridge id _Nullable)(self.layer.path);
+    animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+
+    [self.layer addAnimation:animation forKey:@"pathAnimation"];
+}
 
 #pragma mark - Getter/setter
 
@@ -62,6 +116,7 @@
 {
     _diameter = diameter;
     self.interpolator.diameter = diameter;
+    [self updatePath];
 }
 
 @end

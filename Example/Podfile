@@ -3,6 +3,7 @@ use_frameworks!
 target 'NUCharts_Example' do
   pod 'NUCharts', :path => '../'
   pod 'Masonry'
+  pod 'NUAnimationKit', :git => 'git@github.com:nubank/NUAnimationKit.git'
   target 'NUCharts_Tests' do
     inherit! :search_paths
 
