@@ -23,9 +23,19 @@
 
 @implementation NUViewController
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidLoad
 {
+    [super viewDidLoad];
+
     [self createChart];
+    [self createButton];
+
+    [self setupAnimations];
+}
+
+#pragma mark - Setup
+
+- (void)setupAnimations {
     NUChartPointRenderer *startPointRenderer = (NUChartPointRenderer *)self.startPointStruct.renderer;
     NUChartPointRenderer *endPointRenderer = (NUChartPointRenderer *)self.endPointStruct.renderer;
     NUChartLineRenderer *lineRenderer = (NUChartLineRenderer *)self.bezierStruct.renderer;
@@ -54,13 +64,13 @@
     }].withDuration(0.15);
 
     self.animator.initializationBlock();
-    [super viewDidAppear:animated];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+- (void)startAnimation {
+    [self.animator startAnimationChain];
+}
 
+- (void)createButton {
     UIButton *startButton = [UIButton new];
     [startButton setTitle:@"Start" forState:UIControlStateNormal];
     [startButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -73,10 +83,6 @@
         make.bottom.equalTo(self.view).offset(-100);
         make.centerX.equalTo(self.view);
     }];
-}
-
-- (void)startAnimation {
-    [self.animator startAnimationChain];
 }
 
 - (void)createChart {
@@ -95,6 +101,8 @@
         make.size.mas_equalTo(200);
     }];
 }
+
+#pragma mark - Curve creation
 
 - (NUChartRenderStructure *)addBezierCurve:(NUChartView *)view
 {
