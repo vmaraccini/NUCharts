@@ -89,6 +89,15 @@
 
 #pragma mark - Animations
 
+- (void)animateFade {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.fromValue = @(0.f);
+    animation.toValue = @(1.f);
+    animation.duration = self.animationDuration;
+    animation.timingFunction = self.animationTimingFunction;
+    [self.layer addAnimation:animation forKey:@"fade"];
+}
+
 - (void)animateScale
 {
     //Generate a small path
