@@ -68,13 +68,13 @@
                                              data:data
                                          renderer:renderer];
     [self.renderStructures addObject:structure];
-    [self layoutSubviews];
+    [self drawChart];
     return structure;
 }
 
 - (void)removeChartByReference:(NUChartRenderStructure *)structure {
     [self.renderStructures removeObject:structure];
-    [self layoutSubviews];
+    [self drawChart];
 }
 
 #pragma mark - Private
