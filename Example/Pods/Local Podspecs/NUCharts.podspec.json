@@ -1,9 +1,9 @@
 {
   "name": "NUCharts",
-  "version": "0.1.0",
-  "summary": "A short description of NUCharts.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/NUCharts",
+  "version": "0.1.2",
+  "summary": "A simple charts library that supports fancy animations.",
+  "description": "A simple charts library that supports fancy animations.",
+  "homepage": "https://github.com/nubank/NUCharts",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "Victor": "vgm.maraccini@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/NUCharts.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/nubank/NUCharts.git",
+    "tag": "0.1.2"
   },
   "platforms": {
     "ios": "8.0"
