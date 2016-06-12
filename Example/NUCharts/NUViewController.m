@@ -63,6 +63,7 @@
         [lineRenderer setStrokeEnd:0.f animated:NO];
         [bezierStructure updateData:defaultData animated:NO];
         [pointStructure updateData:defaultPointData animated:NO];
+        [bezierStructure fitAxisAnimated:NO];
     };
 
     [self.animator addAnimations:^{
