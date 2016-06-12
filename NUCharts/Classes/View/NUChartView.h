@@ -44,14 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
                                toAxisX:(NUChartAxis *)xAxis
                                  axisY:(NUChartAxis *)yAxis;
 
-///Gets the @c x axis for a dataset
-- (NUChartAxis *)xAxisForDataSet:(NUChartData *)data;
-
-///Gets the @c y axis for a dataset
-- (NUChartAxis *)yAxisForDataSet:(NUChartData *)data;
-
 ///Removes a dataset from the view.
-- (void)removeDataSet:(NUChartData *)data;
+- (void)removeChartByReference:(NUChartRenderStructure *)structure;
 
 @end
 
