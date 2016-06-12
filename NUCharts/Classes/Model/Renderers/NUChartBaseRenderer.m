@@ -10,24 +10,74 @@
 
 @implementation NUChartBaseRenderer
 
-- (CAShapeLayer *__nullable)drawPath:(CGPathRef)path
-                          withxRange:(NUChartRange *)xRange
-                              yRange:(NUChartRange *)yRange
-                              bounds:(CGRect)bounds
+- (CAShapeLayer *)drawData:(NUChartData *)data
+                    xRange:(NUChartRange *)xRange
+                    yRange:(NUChartRange *)yRange
+                    bounds:(CGRect)bounds
 {
     if (CGRectIsEmpty(bounds)) {
         return nil;
     }
 
-    CAShapeLayer *shape = [CAShapeLayer layer];
-    shape.path = path;
-    
-    return shape;
+    CGPathRef path = [self pathForData:data
+                            withxRange:xRange
+                                yRange:yRange
+                                bounds:bounds];
+
+    self.shapeLayer = [CAShapeLayer layer];
+    self.shapeLayer.path = path;
+
+    return self.shapeLayer;
 }
 
-- (CAShapeLayer *)drawData:(NUChartData *)data bounds:(CGRect)bounds
+- (CGPathRef)pathForData:(NUChartData*)data
+              withxRange:(NUChartRange *)xRange
+                  yRange:(NUChartRange *)yRange
+                  bounds:(CGRect)bounds
 {
     NU_ABSTRACT_METHOD
+}
+
+- (CAShapeLayer *)updateData:(NUChartData *)data
+                      xRange:(NUChartRange *)xRange
+                      yRange:(NUChartRange *)yRange
+                      bounds:(CGRect)bounds
+                    animated:(BOOL)animated
+{
+
+    if (!self.shapeLayer) {
+        return [self drawData:data
+                       xRange:xRange
+                       yRange:yRange
+                       bounds:bounds];
+    }
+
+    if (!animated) {
+        [CATransaction begin];
+        [CATransaction setAnimationDuration:0];
+    }
+
+    self.shapeLayer.path = [self pathForData:data
+                                  withxRange:xRange
+                                      yRange:yRange
+                                      bounds:bounds];
+
+    if (!animated) {
+        [CATransaction commit];
+    }
+
+    return self.shapeLayer;
+}
+
+#pragma mark - Base shape animation
+
+-(id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event {
+    if ([event isEqualToString:@"path"]) {
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:event];
+        animation.fromValue = (__bridge id _Nullable)(self.shapeLayer.path);
+        return animation;
+    }
+    return nil;
 }
 
 @end

@@ -17,7 +17,6 @@
 @property (nonatomic) CGRect bounds;
 
 @property (nonatomic, strong) NUChartPointInterpolator *interpolator;
-@property (nonatomic, strong) CAShapeLayer *layer;
 @end
 
 @implementation NUChartPointRenderer
@@ -43,6 +42,19 @@
     self.diameter = 2.f;
 }
 
+#pragma mark - Public
+
+- (CGPathRef)pathForData:(NUChartData*)data
+              withxRange:(NUChartRange *)xRange
+                  yRange:(NUChartRange *)yRange
+                  bounds:(CGRect)bounds
+{
+    return [self.interpolator pathForData:data
+                                   xRange:xRange
+                                   yRange:yRange
+                                   bounds:bounds];
+}
+
 - (CAShapeLayer *)drawData:(NUChartData *)data
                     xRange:(NUChartRange *)xRange
                     yRange:(NUChartRange *)yRange
@@ -53,38 +65,36 @@
     _yRange = yRange;
     _bounds = bounds;
 
-    CGPathRef path = [self.interpolator pathForData:data
-                                             xRange:xRange
-                                             yRange:yRange
-                                             bounds:bounds];
+    [super drawData:data
+             xRange:xRange
+             yRange:yRange
+             bounds:bounds];
 
-    self.layer = [self drawPath:path
-                     withxRange:xRange
-                         yRange:yRange
-                         bounds:bounds];
-    self.layer.delegate = self;
+    self.shapeLayer.delegate = self;
 
-    self.layer.fillColor = self.fillColor.CGColor;
-    self.layer.lineWidth = self.strokeWidth;
-    self.layer.strokeColor = self.strokeColor.CGColor;
+    self.shapeLayer.fillColor = self.fillColor.CGColor;
+    self.shapeLayer.lineWidth = self.strokeWidth;
+    self.shapeLayer.strokeColor = self.strokeColor.CGColor;
 
-    return self.layer;
+    return self.shapeLayer;
 }
 
-- (void)updatePath {
-    self.layer.path = [self.interpolator pathForData:self.data
-                                              xRange:self.xRange
-                                              yRange:self.yRange
-                                              bounds:self.bounds];
-}
+- (CAShapeLayer *)updateData:(NUChartData *)data
+                      xRange:(NUChartRange *)xRange
+                      yRange:(NUChartRange *)yRange
+                      bounds:(CGRect)bounds
+                    animated:(BOOL)animated
+{
+    self.data = data;
+    self.xRange = xRange;
+    self.yRange = yRange;
+    self.bounds = bounds;
 
--(id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event {
-    if ([event isEqualToString:@"path"]) {
-        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:event];
-        animation.fromValue = (__bridge id _Nullable)(self.layer.path);
-        return animation;
-    }
-    return nil;
+    return [super updateData:data
+                      xRange:xRange
+                      yRange:yRange
+                      bounds:bounds
+                    animated:animated];
 }
 
 #pragma mark - Animations
@@ -95,7 +105,7 @@
     animation.toValue = @(1.f);
     animation.duration = self.animationDuration;
     animation.timingFunction = self.animationTimingFunction;
-    [self.layer addAnimation:animation forKey:@"fade"];
+    [self.shapeLayer addAnimation:animation forKey:@"fade"];
 }
 
 - (void)animateScale
@@ -112,11 +122,11 @@
     animation.duration = self.animationDuration;
     animation.timingFunction = self.animationTimingFunction;
     animation.fromValue = (__bridge id _Nullable)(smallPath);
-    animation.toValue = (__bridge id _Nullable)(self.layer.path);
+    animation.toValue = (__bridge id _Nullable)(self.shapeLayer.path);
     animation.fillMode = kCAFillModeForwards;
     animation.removedOnCompletion = NO;
 
-    [self.layer addAnimation:animation forKey:@"pathAnimation"];
+    [self.shapeLayer addAnimation:animation forKey:@"pathAnimation"];
 }
 
 #pragma mark - Getter/setter
@@ -125,7 +135,11 @@
 {
     _diameter = diameter;
     self.interpolator.diameter = diameter;
-    [self updatePath];
+    [self updateData:self.data
+              xRange:self.xRange
+              yRange:self.yRange
+              bounds:self.bounds
+            animated:YES];
 }
 
 @end

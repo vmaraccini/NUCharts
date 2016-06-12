@@ -32,6 +32,13 @@ NS_ASSUME_NONNULL_BEGIN
                               xRange:(NUChartRange *)xRange
                               yRange:(NUChartRange *)yRange
                               bounds:(CGRect)bounds;
+
+- (CAShapeLayer *__nullable)updateData:(NUChartData *)data
+                                xRange:(NUChartRange *)xRange
+                                yRange:(NUChartRange *)yRange
+                                bounds:(CGRect)bounds
+                              animated:(BOOL)animated;
+
 @end
 
 NS_ASSUME_NONNULL_END

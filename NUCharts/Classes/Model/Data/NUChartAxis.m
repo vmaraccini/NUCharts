@@ -67,4 +67,15 @@
     return self;
 }
 
++ (instancetype)fullXRangeForData:(NUChartData *)data
+{
+    return [[NUChartAxis alloc] initWithRange:NUMakeRange(data.minimumX, data.maximumX)];
+}
+
+
++ (instancetype)fullYRangeForData:(NUChartData *)data
+{
+    return [[NUChartAxis alloc] initWithRange:NUMakeRange(data.minimumY, data.maximumY)];
+}
+
 @end

@@ -6,7 +6,7 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+#import "NUChartData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NUChartRange *range;
 
 - (instancetype)initWithRange:(NUChartRange *)range;
+
++ (instancetype)fullXRangeForData:(NUChartData *)data;
++ (instancetype)fullYRangeForData:(NUChartData *)data;
 
 @end
 

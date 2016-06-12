@@ -9,7 +9,7 @@
 #import "NUChartLineRenderer.h"
 
 @interface NUChartLineRenderer ()
-@property (nonatomic, strong) CAShapeLayer *shapeLayer;
+
 @end
 
 @implementation NUChartLineRenderer
@@ -32,20 +32,26 @@
 
 #pragma mark - Public
 
+- (CGPathRef)pathForData:(NUChartData*)data
+              withxRange:(NUChartRange *)xRange
+                  yRange:(NUChartRange *)yRange
+                  bounds:(CGRect)bounds
+{
+    return [self.interpolator pathForData:data
+                                   xRange:xRange
+                                   yRange:yRange
+                                   bounds:bounds];
+}
+
 - (CAShapeLayer *)drawData:(NUChartData *)data
                     xRange:(NUChartRange *)xRange
                     yRange:(NUChartRange *)yRange
                     bounds:(CGRect)bounds
 {
-    CGPathRef path = [self.interpolator pathForData:data
-                                             xRange:xRange
-                                             yRange:yRange
-                                             bounds:bounds];
-
-    self.shapeLayer = [self drawPath:path
-                          withxRange:xRange
-                              yRange:yRange
-                              bounds:bounds];
+    [super drawData:data
+             xRange:xRange
+             yRange:yRange
+             bounds:bounds];
 
     self.shapeLayer.lineDashPattern = self.dashPattern;
     self.shapeLayer.lineDashPhase = self.dashPhase;
@@ -54,6 +60,8 @@
     self.shapeLayer.fillColor = [UIColor clearColor].CGColor;
 
     self.shapeLayer.strokeEnd = self.strokeEnd;
+
+    self.shapeLayer.delegate = self;
 
     return self.shapeLayer;
 }

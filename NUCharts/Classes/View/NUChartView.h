@@ -19,6 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NUChartData *data;
 @property (nonatomic, readonly) id<NUChartRenderer> renderer;
+
+//Update methods
+- (void)updateData:(NUChartData *)data animated:(BOOL)animated;
+
+- (void)updatexAxis:(NUChartAxis *)xAxis animated:(BOOL)animated;
+- (void)updateyAxis:(NUChartAxis *)yAxis animated:(BOOL)animated;
 @end
 
 @interface NUChartView : UIView

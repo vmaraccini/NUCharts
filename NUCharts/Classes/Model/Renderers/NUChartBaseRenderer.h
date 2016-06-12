@@ -14,10 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NUChartBaseRenderer : NSObject <NUChartRenderer>
 
-- (CAShapeLayer *__nullable)drawPath:(CGPathRef)path
-                          withxRange:(NUChartRange *)xRange
-                              yRange:(NUChartRange *)yRange
-                              bounds:(CGRect)bounds;
+@property (nonatomic, strong) CAShapeLayer *shapeLayer;
+
+- (CGPathRef)pathForData:(NUChartData*)data
+              withxRange:(NUChartRange *)xRange
+                  yRange:(NUChartRange *)yRange
+                  bounds:(CGRect)bounds;
 
 @end
 
