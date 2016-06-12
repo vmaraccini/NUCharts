@@ -10,6 +10,7 @@
 #import "NUChartView.h"
 
 #import "NUChartLinearInterpolator.h"
+#import "NUChartBezierInterpolator.h"
 #import "NUChartFlatYBezierInterpolator.h"
 
 #import "NUChartLineRenderer.h"

@@ -1,5 +1,5 @@
 //
-//  NUMonotoneCubicInterpolator.m
+//  NUChartFlatYBezierInterpolator.m
 //  Pods
 //
 //  Created by Victor Gabriel Maraccini on 5/30/16.
@@ -11,47 +11,19 @@
 
 @implementation NUChartFlatYBezierInterpolator
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _smoothness = 0.3;
-    }
-    return self;
-}
-
 #pragma mark - Extension points
 
-- (void)drawPoints:(NSArray<NSValue *> *)points
+- (void)drawPoint:(CGPoint)currentPoint
+    previousPoint:(CGPoint)previousPoint
+    controlPoint1:(CGPoint)cp1
+    controlPoint2:(CGPoint)cp2
+             path:(UIBezierPath *)path
 {
-    if (points.count < 3) {
-        self.mutablePath = NULL;
-    }
-
-    UIBezierPath *path = [UIBezierPath bezierPath];
-
-    CGPoint previousPoint = CGPointApplyAffineTransform(points[0].CGPointValue, self.scaleTransform);
-    [path moveToPoint:previousPoint];
-
-    for (int i = 1; i < points.count; i++) {
-        CGPoint currentPoint = CGPointApplyAffineTransform(points[i].CGPointValue, self.scaleTransform);;
-
-        CGPoint delta = CGPointMake(currentPoint.x - previousPoint.x,
-                                    currentPoint.y - previousPoint.y);
-
-        CGPoint cp1 = CGPointMake(previousPoint.x + delta.x * self.smoothness,
-                                  previousPoint.y);
-        CGPoint cp2 = CGPointMake(currentPoint.x - delta.x * self.smoothness,
-                                  currentPoint.y);
-
-        [path addCurveToPoint:currentPoint
-                controlPoint1:cp1
-                controlPoint2:cp2];
-
-        previousPoint = currentPoint;
-    }
-
-    self.mutablePath = CFBridgingRetain(path.CGPath);
+    CGPoint flatY1 = CGPointMake(cp1.x, previousPoint.y);
+    CGPoint flatY2 = CGPointMake(cp2.x, currentPoint.y);
+    [path addCurveToPoint:currentPoint
+            controlPoint1:flatY1
+            controlPoint2:flatY2];
 }
 
 @end

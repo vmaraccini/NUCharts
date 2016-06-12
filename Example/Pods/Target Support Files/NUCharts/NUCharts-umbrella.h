@@ -4,6 +4,7 @@
 #import "NUChartData.h"
 #import "NUChartBaseInterpolator+Private.h"
 #import "NUChartBaseInterpolator.h"
+#import "NUChartBezierInterpolator.h"
 #import "NUChartFlatYBezierInterpolator.h"
 #import "NUChartLinearInterpolator.h"
 #import "NUChartPointInterpolator.h"
