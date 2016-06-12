@@ -33,8 +33,8 @@
 #pragma mark - Public
 
 - (CAShapeLayer *)drawData:(NUChartData *)data
-                    xRange:(NSRange)xRange
-                    yRange:(NSRange)yRange
+                    xRange:(NUChartRange *)xRange
+                    yRange:(NUChartRange *)yRange
                     bounds:(CGRect)bounds
 {
     CGPathRef path = [self.interpolator pathForData:data

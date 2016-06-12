@@ -49,8 +49,8 @@
 
 -(NUChartRenderStructure *)addDataSet:(NUChartData *)data
                          withRenderer:(id<NUChartRenderer>)renderer {
-    NSRange xRange = NSMakeRange(data.minimumX, data.maximumX - data.minimumX);
-    NSRange yRange = NSMakeRange(data.minimumY, data.maximumY - data.minimumY);
+    NUChartRange *xRange = NUMakeRange(data.minimumX, data.maximumX);
+    NUChartRange *yRange = NUMakeRange(data.minimumY, data.maximumY);
     return [self addDataSet:data
                withRenderer:renderer
                     toAxisX:[[NUChartAxis alloc] initWithRange:xRange]

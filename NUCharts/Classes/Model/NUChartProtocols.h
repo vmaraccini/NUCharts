@@ -12,13 +12,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class NUChartRange;
+
 // Interpolator
 
 @protocol NUChartInterpolator <NSObject>
 ///Override point. Creates and returns a CGPath for the data set
 - (CGPathRef)pathForData:(NUChartData *)data
-                  xRange:(NSRange)xRange
-                  yRange:(NSRange)yRange
+                  xRange:(NUChartRange *)xRange
+                  yRange:(NUChartRange *)yRange
                   bounds:(CGRect)bounds CF_RETURNS_RETAINED;
 @end
 
@@ -27,8 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol NUChartRenderer <NSObject>
 ///Override point. Renders the data set into the rectangle determined by @c bounds and returns a CAShapeLayer
 - (CAShapeLayer *__nullable)drawData:(NUChartData *)data
-                              xRange:(NSRange)xRange
-                              yRange:(NSRange)yRange
+                              xRange:(NUChartRange *)xRange
+                              yRange:(NUChartRange *)yRange
                               bounds:(CGRect)bounds;
 @end
 

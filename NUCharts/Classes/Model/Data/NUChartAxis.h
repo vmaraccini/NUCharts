@@ -10,10 +10,28 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NUChartAxis : NSObject
-@property (nonatomic, readonly) NSRange range;
+#define NUMakeRange(min, max) [[NUChartRange alloc] initWithMinimum:min maximum:max]
 
-- (instancetype)initWithRange:(NSRange)range;
+@interface NUChartRange : NSObject
+
+@property (nonatomic, readonly) CGFloat minimum;
+@property (nonatomic, readonly) CGFloat maximum;
+
+@property (nonatomic, readonly) CGFloat span;
+
+- (instancetype)initWithMinimum:(CGFloat)min
+                        maximum:(CGFloat)maximum;
+
+- (BOOL)isWithinRange:(CGFloat)value;
+
+- (BOOL)isEmpty;
+
+@end
+
+@interface NUChartAxis : NSObject
+@property (nonatomic, readonly) NUChartRange *range;
+
+- (instancetype)initWithRange:(NUChartRange *)range;
 
 @end
 

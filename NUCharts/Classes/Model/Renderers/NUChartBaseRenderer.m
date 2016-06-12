@@ -11,8 +11,8 @@
 @implementation NUChartBaseRenderer
 
 - (CAShapeLayer *__nullable)drawPath:(CGPathRef)path
-                          withxRange:(NSRange)xRange
-                              yRange:(NSRange)yRange
+                          withxRange:(NUChartRange *)xRange
+                              yRange:(NUChartRange *)yRange
                               bounds:(CGRect)bounds
 {
     if (CGRectIsEmpty(bounds)) {

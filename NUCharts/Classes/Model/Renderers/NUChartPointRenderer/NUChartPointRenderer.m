@@ -12,8 +12,8 @@
 @interface NUChartPointRenderer ()
 
 @property (nonatomic, strong) NUChartData *data;
-@property (nonatomic) NSRange xRange;
-@property (nonatomic) NSRange yRange;
+@property (nonatomic) NUChartRange *xRange;
+@property (nonatomic) NUChartRange *yRange;
 @property (nonatomic) CGRect bounds;
 
 @property (nonatomic, strong) NUChartPointInterpolator *interpolator;
@@ -44,8 +44,8 @@
 }
 
 - (CAShapeLayer *)drawData:(NUChartData *)data
-                    xRange:(NSRange)xRange
-                    yRange:(NSRange)yRange
+                    xRange:(NUChartRange *)xRange
+                    yRange:(NUChartRange *)yRange
                     bounds:(CGRect)bounds
 {
     _data = data;

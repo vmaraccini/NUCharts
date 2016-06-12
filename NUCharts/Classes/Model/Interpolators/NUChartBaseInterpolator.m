@@ -7,6 +7,7 @@
 //
 
 #import "NUChartBaseInterpolator.h"
+#import "NUChartAxis.h"
 
 @interface NUChartBaseInterpolator ()
 @property (nonatomic, readwrite) CGPathRef mutablePath;
@@ -16,8 +17,8 @@
 @implementation NUChartBaseInterpolator
 
 - (CGPathRef)pathForData:(NUChartData *)data
-                  xRange:(NSRange)xRange
-                  yRange:(NSRange)yRange
+                  xRange:(NUChartRange *)xRange
+                  yRange:(NUChartRange *)yRange
                   bounds:(CGRect)bounds
 {
     if (CGRectIsEmpty(bounds)) {
@@ -27,21 +28,17 @@
     NSMutableArray<NSValue *>*filteredData = [NSMutableArray new];
     for (NSValue *wrapped in data.points) {
         CGPoint point = wrapped.CGPointValue;
-        if ([self point:point.x withinRange:xRange] &&
-            [self point:point.y withinRange:yRange]) {
-            
-            CGFloat invertedPoint = NSMaxRange(yRange) - point.y;
-            [filteredData addObject:[NSNumber valueWithCGPoint:CGPointMake(point.x, invertedPoint)]];
-        }
+        CGFloat invertedPoint = yRange.maximum - point.y;
+        [filteredData addObject:[NSNumber valueWithCGPoint:CGPointMake(point.x, invertedPoint)]];
     }
 
     self.mutablePath = CGPathCreateMutable();
 
-    CGFloat scaleX = xRange.length != NSNotFound ?
-    bounds.size.width / xRange.length: 1;
+    CGFloat scaleX = !xRange.isEmpty ?
+    bounds.size.width / xRange.span: 1;
 
-    CGFloat scaleY = yRange.length != NSNotFound ?
-    bounds.size.height / yRange.length : 1;
+    CGFloat scaleY = !yRange.isEmpty ?
+    bounds.size.height / yRange.span : 1;
     self.scaleTransform = CGAffineTransformMakeScale(scaleX, scaleY);
 
     //Calls subclass implementation
@@ -53,17 +50,6 @@
 - (void)drawPoints:(NSArray<NSValue *>*)points
 {
     NU_ABSTRACT_METHOD
-}
-
-#pragma mark - Helper functions
-
-- (BOOL)point:(CGFloat)point withinRange:(NSRange)range
-{
-    if (range.location == NSNotFound) {
-        return YES;
-    }
-    return point >= range.location &&
-    point <= NSMaxRange(range);
 }
 
 @end
