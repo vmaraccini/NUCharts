@@ -23,8 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 //Update methods
 - (void)updateData:(NUChartData *)data animated:(BOOL)animated;
 
-- (void)updatexAxis:(NUChartAxis *)xAxis animated:(BOOL)animated;
-- (void)updateyAxis:(NUChartAxis *)yAxis animated:(BOOL)animated;
+- (void)updatexAxis:(nullable NUChartAxis *)xAxis animated:(BOOL)animated;
+- (void)updateyAxis:(nullable NUChartAxis *)yAxis animated:(BOOL)animated;
+
+///Adjusts x and y axis to fit data
+- (void)fitAxisAnimated:(BOOL)animated;
 @end
 
 @interface NUChartView : UIView

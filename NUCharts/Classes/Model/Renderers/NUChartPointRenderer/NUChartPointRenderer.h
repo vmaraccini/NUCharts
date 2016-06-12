@@ -15,7 +15,7 @@
 ///The diameter of the points. Animatable.
 @property (nonatomic, readwrite) CGFloat diameter;
 ///The width of the point stroke (border)
-@property (nonatomic, readwrite) CGFloat strokeWidth;
+@property (nonatomic, readwrite) CGFloat lineWidth;
 ///The color of the point stroke (border)
 @property (nonatomic, strong) UIColor *strokeColor;
 ///The point's fill color

@@ -36,7 +36,7 @@
     _animationDuration = 0.5;
     _animationTimingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
-    _strokeWidth = 1.f;
+    _lineWidth = 1.f;
     _strokeColor = [UIColor blackColor];
 
     self.diameter = 2.f;
@@ -73,7 +73,7 @@
     self.shapeLayer.delegate = self;
 
     self.shapeLayer.fillColor = self.fillColor.CGColor;
-    self.shapeLayer.lineWidth = self.strokeWidth;
+    self.shapeLayer.lineWidth = self.lineWidth;
     self.shapeLayer.strokeColor = self.strokeColor.CGColor;
 
     return self.shapeLayer;
@@ -140,6 +140,18 @@
               yRange:self.yRange
               bounds:self.bounds
             animated:YES];
+}
+
+- (void)setStrokeColor:(UIColor *)strokeColor
+{
+    _strokeColor = strokeColor;
+    self.shapeLayer.strokeColor = strokeColor.CGColor;
+}
+
+- (void)setLineWidth:(CGFloat)lineWidth
+{
+    _lineWidth = lineWidth;
+    self.shapeLayer.lineWidth = lineWidth;
 }
 
 @end

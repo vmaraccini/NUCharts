@@ -56,6 +56,12 @@
     [self drawAnimated:animated];
 }
 
+- (void)fitAxisAnimated:(BOOL)animated
+{
+    [self updatexAxis:nil animated:animated];
+    [self updateyAxis:nil animated:animated];
+}
+
 - (CAShapeLayer *)drawAnimated:(BOOL)animated
 {
     return [self.renderer updateData:self.data

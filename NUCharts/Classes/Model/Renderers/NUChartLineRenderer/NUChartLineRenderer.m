@@ -66,6 +66,8 @@
     return self.shapeLayer;
 }
 
+#pragma mark - Getter/setter
+
 - (void)setStrokeEnd:(CGFloat)strokeEnd {
     [self setStrokeEnd:strokeEnd animated:YES];
 }
@@ -80,6 +82,30 @@
     if (!animated) {
         [CATransaction commit];
     }
+}
+
+- (void)setStrokeColor:(UIColor *)strokeColor
+{
+    _strokeColor = strokeColor;
+    self.shapeLayer.strokeColor = strokeColor.CGColor;
+}
+
+- (void)setLineWidth:(CGFloat)lineWidth
+{
+    _lineWidth = lineWidth;
+    self.shapeLayer.lineWidth = lineWidth;
+}
+
+- (void)setDashPattern:(NSArray<NSNumber *> *)dashPattern
+{
+    _dashPattern = dashPattern;
+    self.shapeLayer.lineDashPattern = dashPattern;
+}
+
+- (void)setDashPhase:(CGFloat)dashPhase
+{
+    _dashPhase = dashPhase;
+    self.shapeLayer.lineDashPhase = dashPhase;
 }
 
 #pragma mark - Animations
