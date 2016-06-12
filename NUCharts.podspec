@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/nubank/NUCharts'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Victor' => 'vgm.maraccini@gmail.com' }
-  s.source           = { :git => 'https://github.com/nubank/NUCharts.git', :tag => s.version.to_s }
+  s.source           = { :git => 'git@github.com:nubank/NUCharts.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
