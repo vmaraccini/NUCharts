@@ -42,8 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setStrokeEnd:(CGFloat)strokeEnd animated:(BOOL)animated;
 
 //Animations
-- (void)animateDrawAlongPathWithDuration:(CGFloat)duration
-                          timingFunction:(CAMediaTimingFunction *)animationTimingFunction;
 //- (void)animateBuildX;
 //- (void)animateBuildY;
 //- (void)animateBuildXY;
