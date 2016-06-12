@@ -14,6 +14,9 @@
 
 @interface NUViewController ()
 @property (nonatomic, strong) NUChartView *chartView;
+
+@property (nonatomic, strong) NUChartData *bezierData;
+
 @property (nonatomic, strong) NUChartRenderStructure *bezierStruct;
 @property (nonatomic, strong) NUChartRenderStructure *startPointStruct;
 @property (nonatomic, strong) NUChartRenderStructure *endPointStruct;
@@ -40,12 +43,26 @@
     NUChartPointRenderer *endPointRenderer = (NUChartPointRenderer *)self.endPointStruct.renderer;
     NUChartLineRenderer *lineRenderer = (NUChartLineRenderer *)self.bezierStruct.renderer;
 
+    NUChartRenderStructure *bezierStructure = self.bezierStruct;
+    NUChartRenderStructure *pointStructure = self.startPointStruct;
+
+    NUChartData *defaultData = self.bezierData;
+    NUChartData *newData = [[NUChartData alloc] initWithxValues:@[@(0),@(50),@(100),@(150)]
+                                                        yValues:@[@(100),@(100),@(0),@(100)]];
+
+    NUChartData *defaultPointData = [[NUChartData alloc] initWithxValues:@[@0]
+                                                                 yValues:@[@0]];
+    NUChartData *newPointData = [[NUChartData alloc] initWithxValues:@[@0]
+                                                             yValues:@[@100]];
+
     self.animator = [NUAnimationController new];
 
     self.animator.initializationBlock = ^{
         startPointRenderer.diameter = 1e-3;
         endPointRenderer.diameter = 1e-3;
         [lineRenderer setStrokeEnd:0.f animated:NO];
+        [bezierStructure updateData:defaultData animated:NO];
+        [pointStructure updateData:defaultPointData animated:NO];
     };
 
     [self.animator addAnimations:^{
@@ -62,6 +79,16 @@
     [self.animator addAnimations:^{
         endPointRenderer.diameter = 8;
     }].withDuration(0.15);
+
+    [self.animator addAnimations:^{
+        [bezierStructure updateData:newData animated:YES];
+        [pointStructure updateData:newPointData animated:YES];
+    }];
+
+    [self.animator addAnimations:^{
+        [bezierStructure updatexAxis:[[NUChartAxis alloc] initWithRange:NUMakeRange(0,200)]
+                            animated:YES];
+    }];
 
     self.animator.initializationBlock();
 }
@@ -106,14 +133,14 @@
 
 - (NUChartRenderStructure *)addBezierCurve:(NUChartView *)view
 {
-    NUChartData *data = [[NUChartData alloc] initWithxValues:@[@(0),@(50),@(100),@(150)]
-                                                     yValues:@[@(0),@(100),@(0),@(100)]];
+    self.bezierData = [[NUChartData alloc] initWithxValues:@[@(0),@(50),@(100),@(150)]
+                                                   yValues:@[@(0),@(100),@(0),@(100)]];
 
     NUChartLineRenderer *renderer = [NUChartLineRenderer new];
     renderer.lineWidth = 2;
     renderer.interpolator = [NUChartFlatYBezierInterpolator new];
 
-    return [view addDataSet:data
+    return [view addDataSet:self.bezierData
                withRenderer:renderer];
 }
 
