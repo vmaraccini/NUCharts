@@ -31,7 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
                                           axisY:(NUChartAxis *)yAxis;
 
 ///Removes a dataset from the view.
-- (void)removeChartByReference:(NUChartRenderReference *)structure;
+- (void)removeChartByReference:(NUChartRenderReference *)reference;
+
+- (CGRect)rectForReference:(NUChartRenderReference *)reference;
 
 @end
 

@@ -65,6 +65,11 @@
     [self drawChart];
 }
 
+- (CGRect)rectForReference:(NUChartRenderReference *)reference
+{
+    return [self convertRect:[reference.renderer rectForData] toView:self.superview];
+}
+
 #pragma mark - Private
 
 - (void)drawChart {

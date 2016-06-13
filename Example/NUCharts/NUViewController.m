@@ -14,6 +14,7 @@
 
 @interface NUViewController ()
 @property (nonatomic, strong) NUChartView *chartView;
+@property (nonatomic, strong) UIView *occludingView;
 
 @property (nonatomic, strong) NUChartData *bezierData;
 
@@ -33,6 +34,11 @@
     [self createChart];
     [self createButton];
 
+    self.occludingView = [UIView new];
+    self.occludingView.frame = CGRectMake(20, 20, 20, 20);
+    self.occludingView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:self.occludingView];
+
     [self setupAnimations];
 }
 
@@ -45,6 +51,7 @@
 
     NUChartLineRenderReference *bezierStructure = self.bezierStruct;
     NUChartPointRenderReference *pointStructure = self.startPointStruct;
+    NUChartPointRenderReference *endPoint = self.endPointStruct;
 
     NUChartData *defaultData = self.bezierData;
     NUChartData *newData = [[NUChartData alloc] initWithxValues:@[@(0),@(50),@(100),@(150)]
@@ -89,6 +96,10 @@
     [self.animator addAnimations:^{
         [bezierStructure updatexRange:NUMakeRange(0,200)
                             animated:YES];
+    }];
+
+    [self.animator addAnimations:^{
+        self.occludingView.frame = [self.chartView rectForReference:endPoint];
     }];
 
     self.animator.initializationBlock();

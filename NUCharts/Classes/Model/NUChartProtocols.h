@@ -39,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
                                bounds:(CGRect)bounds
                              animated:(BOOL)animated;
 
+- (CGRect)rectForData;
+
 @end
 
 NS_ASSUME_NONNULL_END

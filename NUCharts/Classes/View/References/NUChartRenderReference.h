@@ -11,6 +11,8 @@
 #import "NUChartLineRenderer.h"
 #import "NUChartPointRenderer.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NUChartRenderReference : NSObject
 
 @property (nonatomic, readonly) NUChartAxis *xAxis;
@@ -45,3 +47,5 @@
                                                     renderer:(id<NUChartRenderer>)renderer
                                                       bounds:(CGRect)bounds;
 @end
+
+NS_ASSUME_NONNULL_END

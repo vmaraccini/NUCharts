@@ -74,6 +74,11 @@
     return self.shapeLayer;
 }
 
+- (CGRect)rectForData
+{
+    return CGPathGetPathBoundingBox(self.shapeLayer.path);
+}
+
 #pragma mark - Base shape animation
 
 -(id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event {
