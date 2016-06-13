@@ -8,6 +8,11 @@
 
 #import "NUChartBaseRenderer.h"
 
+@interface NUChartBaseRenderer ()
+@property (nonatomic) BOOL batch;
+@property (nonatomic) CGPathRef batchRef;
+@end
+
 @implementation NUChartBaseRenderer
 
 - (CAShapeLayer *)drawData:(NUChartData *)data
@@ -52,7 +57,7 @@
                        bounds:bounds];
     }
 
-    if (!animated) {
+    if (!animated && !self.batch) {
         [CATransaction begin];
         [CATransaction setAnimationDuration:0];
     }
@@ -62,7 +67,7 @@
                                       yRange:yRange
                                       bounds:bounds];
 
-    if (!animated) {
+    if (!animated && !self.batch) {
         [CATransaction commit];
     }
 
@@ -74,10 +79,24 @@
 -(id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event {
     if ([event isEqualToString:@"path"]) {
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:event];
-        animation.fromValue = (__bridge id _Nullable)(self.shapeLayer.path);
+        CGPathRef from = self.batch ? self.batchRef : self.shapeLayer.path;
+
+        animation.fromValue = (__bridge id _Nullable)from;
         return animation;
     }
     return nil;
+}
+
+- (void)startBatchAnimations
+{
+    _batch = YES;
+    _batchRef = self.shapeLayer.path;
+}
+
+- (void)endBatchAnimations
+{
+    _batch = NO;
+    _batchRef = nil;
 }
 
 @end

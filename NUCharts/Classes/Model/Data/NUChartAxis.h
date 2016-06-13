@@ -26,15 +26,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isEmpty;
 
++ (instancetype)fullXRangeForData:(NUChartData *)data;
++ (instancetype)fullYRangeForData:(NUChartData *)data;
+
 @end
 
 @interface NUChartAxis : NSObject
 @property (nonatomic, readonly) NUChartRange *range;
 
 - (instancetype)initWithRange:(NUChartRange *)range;
-
-+ (instancetype)fullXRangeForData:(NUChartData *)data;
-+ (instancetype)fullYRangeForData:(NUChartData *)data;
 
 @end
 

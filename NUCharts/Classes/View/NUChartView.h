@@ -23,8 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 //Update methods
 - (void)updateData:(NUChartData *)data animated:(BOOL)animated;
 
-- (void)updatexAxis:(nullable NUChartAxis *)xAxis animated:(BOOL)animated;
-- (void)updateyAxis:(nullable NUChartAxis *)yAxis animated:(BOOL)animated;
+- (void)updatexRange:(nullable NUChartRange *)xRange animated:(BOOL)animated;
+- (void)updateyRange:(nullable NUChartRange *)yRange animated:(BOOL)animated;
 
 ///Adjusts x and y axis to fit data
 - (void)fitAxisAnimated:(BOOL)animated;
@@ -37,8 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (NUChartRenderStructure *)addDataSet:(NUChartData *)data
                           withRenderer:(id<NUChartRenderer>)renderer;
 
-///Adds a dataset to the view, associating it to a specific axis.
-///@remarks Returns a @c NUChartRenderStructure, which you should use as reference when deleting/manipulating this chart.
+/**Adds a dataset to the view, associating it to a specific axis.
+ @remarks Returns a @c NUChartRenderStructure, which you should use as reference when deleting/manipulating this chart.
+ @remarks You may link this dataset's axes to another by supplying the other structure's axes.*/
 - (NUChartRenderStructure *)addDataSet:(NUChartData *)data
                           withRenderer:(id<NUChartRenderer>)renderer
                                toAxisX:(NUChartAxis *)xAxis

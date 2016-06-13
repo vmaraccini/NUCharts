@@ -7,6 +7,7 @@
 //
 
 #import "NUChartView.h"
+#import "NUChartAxis+Private.h"
 
 @interface NUChartRenderStructure()
 @property (nonatomic, readwrite) CGRect bounds;
@@ -38,28 +39,30 @@
     [self drawAnimated:animated];
 }
 
-- (void)updatexAxis:(NUChartAxis *)xAxis animated:(BOOL)animated
+//Axis references are not changed so that linking can work.
+
+- (void)updatexRange:(nullable NUChartRange *)xRange animated:(BOOL)animated
 {
-    if (!xAxis) {
-        xAxis = [NUChartAxis fullXRangeForData:self.data];
+    if (!xRange) {
+        xRange = [NUChartRange fullXRangeForData:self.data];
     }
-    _xAxis = xAxis;
+    [self.xAxis updateRange:xRange];
     [self drawAnimated:animated];
 }
 
-- (void)updateyAxis:(NUChartAxis *)yAxis animated:(BOOL)animated
+- (void)updateyRange:(nullable NUChartRange *)yRange animated:(BOOL)animated
 {
-    if (!yAxis) {
-        yAxis = [NUChartAxis fullYRangeForData:self.data];
+    if (!yRange) {
+        yRange = [NUChartRange fullYRangeForData:self.data];
     }
-    _yAxis = yAxis;
+    [self.yAxis updateRange:yRange];
     [self drawAnimated:animated];
 }
 
 - (void)fitAxisAnimated:(BOOL)animated
 {
-    [self updatexAxis:nil animated:animated];
-    [self updateyAxis:nil animated:animated];
+    [self updatexRange:nil animated:animated];
+    [self updateyRange:nil animated:animated];
 }
 
 - (CAShapeLayer *)drawAnimated:(BOOL)animated
@@ -102,8 +105,8 @@
                          withRenderer:(id<NUChartRenderer>)renderer {
     return [self addDataSet:data
                withRenderer:renderer
-                    toAxisX:[NUChartAxis fullXRangeForData:data]
-                      axisY:[NUChartAxis fullYRangeForData:data]];
+                    toAxisX:[[NUChartAxis alloc] initWithRange:[NUChartRange fullXRangeForData:data]]
+                      axisY:[[NUChartAxis alloc] initWithRange:[NUChartRange fullYRangeForData:data]]];
 }
 
 - (NUChartRenderStructure *)addDataSet:(NUChartData *)data

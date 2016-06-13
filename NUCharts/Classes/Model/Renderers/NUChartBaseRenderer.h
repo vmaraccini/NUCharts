@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
                   yRange:(NUChartRange *)yRange
                   bounds:(CGRect)bounds;
 
+- (void)startBatchAnimations;
+- (void)endBatchAnimations;
+
 @end
 
 NS_ASSUME_NONNULL_END
