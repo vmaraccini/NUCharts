@@ -28,6 +28,15 @@
         _data = data;
         _bounds = bounds;
         _renderer = renderer;
+
+        [_xAxis addObserver:self
+                 forKeyPath:kNUChartAxisRangeKey
+                    options:0
+                    context:NULL];
+        [_yAxis addObserver:self
+                 forKeyPath:kNUChartAxisRangeKey
+                    options:0
+                    context:NULL];
     }
     return self;
 }
@@ -72,6 +81,27 @@
                               yRange:self.yAxis.range
                               bounds:self.bounds
                             animated:animated];
+}
+
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSString *,id> *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqualToString:kNUChartAxisRangeKey]) {
+        [self drawAnimated:YES];
+    }
+}
+
+- (void)dealloc
+{
+    @try {
+        [self.xAxis removeObserver:self forKeyPath:kNUChartAxisRangeKey];
+        [self.yAxis removeObserver:self forKeyPath:kNUChartAxisRangeKey];
+    } @catch (NSException *exception) { }
 }
 
 @end

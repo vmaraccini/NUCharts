@@ -7,6 +7,9 @@
 //
 
 #import "NUChartAxis.h"
+#import "NUChartAxis+Private.h"
+
+NSString *const kNUChartAxisRangeKey = @"range";
 
 @implementation NUChartRange
 
@@ -47,13 +50,13 @@
 
 + (instancetype)fullXRangeForData:(NUChartData *)data
 {
-    return [[NUChartAxis alloc] initWithRange:NUMakeRange(data.minimumX, data.maximumX)];
+    return NUMakeRange(data.minimumX, data.maximumX);
 }
 
 
 + (instancetype)fullYRangeForData:(NUChartData *)data
 {
-    return [[NUChartAxis alloc] initWithRange:NUMakeRange(data.minimumY, data.maximumY)];
+    return NUMakeRange(data.minimumY, data.maximumY);
 }
 
 @end
@@ -80,7 +83,9 @@
 
 - (void)updateRange:(NUChartRange *)range
 {
+    [self willChangeValueForKey:kNUChartAxisRangeKey];
     _range = range;
+    [self didChangeValueForKey:kNUChartAxisRangeKey];
 }
 
 @end

@@ -8,6 +8,8 @@
 
 #import <NUCharts/NUCharts.h>
 
+extern NSString *const kNUChartAxisRangeKey;
+
 @interface NUChartAxis (Private)
 
 - (void)updateRange:(NUChartRange *)range;
