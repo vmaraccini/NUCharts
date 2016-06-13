@@ -87,7 +87,7 @@
     }];
 
     [self.animator addAnimations:^{
-        [bezierStructure updatexAxis:[[NUChartAxis alloc] initWithRange:NUMakeRange(0,200)]
+        [bezierStructure updatexRange:NUMakeRange(0,200)
                             animated:YES];
     }];
 
