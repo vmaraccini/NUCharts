@@ -8,6 +8,7 @@
 
 #ifndef NUChart_h
 #import "NUChartView.h"
+#import "NUChartRenderReference.h"
 
 #import "NUChartLinearInterpolator.h"
 #import "NUChartBezierInterpolator.h"
