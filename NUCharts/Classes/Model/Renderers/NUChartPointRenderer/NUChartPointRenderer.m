@@ -154,4 +154,10 @@
     self.shapeLayer.lineWidth = lineWidth;
 }
 
+- (void)setFillColor:(UIColor *)fillColor
+{
+    _fillColor = fillColor;
+    self.shapeLayer.fillColor = fillColor.CGColor;
+}
+
 @end
