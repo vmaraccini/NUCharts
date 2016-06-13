@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NUCharts'
-  s.version          = '0.2.1'
+  s.version          = '0.2.2'
   s.summary          = 'A simple charts library that supports fancy animations.'
 
 # This description is used to generate tags and improve search results.
