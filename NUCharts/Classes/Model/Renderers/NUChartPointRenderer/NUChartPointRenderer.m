@@ -133,13 +133,19 @@
 
 - (void)setDiameter:(CGFloat)diameter
 {
+    [self setDiameter:diameter animated:YES];
+}
+
+- (void)setDiameter:(CGFloat)diameter
+           animated:(BOOL)animated
+{
     _diameter = diameter;
     self.interpolator.diameter = diameter;
     [self updateData:self.data
               xRange:self.xRange
               yRange:self.yRange
               bounds:self.bounds
-            animated:YES];
+            animated:animated];
 }
 
 - (void)setStrokeColor:(UIColor *)strokeColor

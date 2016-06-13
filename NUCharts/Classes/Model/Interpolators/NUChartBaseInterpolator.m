@@ -16,12 +16,13 @@
 
 @implementation NUChartBaseInterpolator
 
-- (CGPathRef)pathForData:(NUChartData *)data
+- (nullable CGPathRef)pathForData:(NUChartData *)data
                   xRange:(NUChartRange *)xRange
                   yRange:(NUChartRange *)yRange
-                  bounds:(CGRect)bounds
+                  bounds:(CGRect)bounds CF_RETURNS_RETAINED
 {
     if (CGRectIsEmpty(bounds)) {
+        self.mutablePath = NULL;
         return NULL;
     }
 
@@ -44,7 +45,7 @@
     //Calls subclass implementation
     [self drawPoints:filteredData];
 
-    return self.mutablePath;
+    return CGPathRetain(self.mutablePath);
 }
 
 - (void)drawPoints:(NSArray<NSValue *>*)points

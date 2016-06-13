@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NUChartData : NSObject<NSCopying>
+@interface NUChartData : NSObject
 @property (nonatomic, readonly) NSArray<NSValue *>* points;
 
 - (instancetype)initWithxValues:(NSArray<NSNumber *>*)xValues

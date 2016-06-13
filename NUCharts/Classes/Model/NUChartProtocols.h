@@ -18,26 +18,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol NUChartInterpolator <NSObject>
 ///Override point. Creates and returns a CGPath for the data set
-- (CGPathRef)pathForData:(NUChartData *)data
-                  xRange:(NUChartRange *)xRange
-                  yRange:(NUChartRange *)yRange
-                  bounds:(CGRect)bounds CF_RETURNS_RETAINED;
+- (nullable CGPathRef)pathForData:(NUChartData *)data
+                           xRange:(NUChartRange *)xRange
+                           yRange:(NUChartRange *)yRange
+                           bounds:(CGRect)bounds CF_RETURNS_RETAINED;
 @end
 
 // Renderer
 
 @protocol NUChartRenderer <NSObject>
 ///Override point. Renders the data set into the rectangle determined by @c bounds and returns a CAShapeLayer
-- (CAShapeLayer *__nullable)drawData:(NUChartData *)data
-                              xRange:(NUChartRange *)xRange
-                              yRange:(NUChartRange *)yRange
-                              bounds:(CGRect)bounds;
+- (nullable CAShapeLayer *)drawData:(NUChartData *)data
+                             xRange:(NUChartRange *)xRange
+                             yRange:(NUChartRange *)yRange
+                             bounds:(CGRect)bounds;
 
-- (CAShapeLayer *__nullable)updateData:(NUChartData *)data
-                                xRange:(NUChartRange *)xRange
-                                yRange:(NUChartRange *)yRange
-                                bounds:(CGRect)bounds
-                              animated:(BOOL)animated;
+- (nullable CAShapeLayer *)updateData:(NUChartData *)data
+                               xRange:(NUChartRange *)xRange
+                               yRange:(NUChartRange *)yRange
+                               bounds:(CGRect)bounds
+                             animated:(BOOL)animated;
 
 @end
 
