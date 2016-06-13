@@ -17,9 +17,9 @@
 
 @property (nonatomic, strong) NUChartData *bezierData;
 
-@property (nonatomic, strong) NUChartRenderStructure *bezierStruct;
-@property (nonatomic, strong) NUChartRenderStructure *startPointStruct;
-@property (nonatomic, strong) NUChartRenderStructure *endPointStruct;
+@property (nonatomic, strong) NUChartLineRenderReference *bezierStruct;
+@property (nonatomic, strong) NUChartPointRenderReference *startPointStruct;
+@property (nonatomic, strong) NUChartPointRenderReference *endPointStruct;
 
 @property (nonatomic, strong) NUAnimationController *animator;
 @end
@@ -39,12 +39,12 @@
 #pragma mark - Setup
 
 - (void)setupAnimations {
-    NUChartPointRenderer *startPointRenderer = (NUChartPointRenderer *)self.startPointStruct.renderer;
-    NUChartPointRenderer *endPointRenderer = (NUChartPointRenderer *)self.endPointStruct.renderer;
-    NUChartLineRenderer *lineRenderer = (NUChartLineRenderer *)self.bezierStruct.renderer;
+    NUChartPointRenderer *startPointRenderer = self.startPointStruct.renderer;
+    NUChartPointRenderer *endPointRenderer = self.endPointStruct.renderer;
+    NUChartLineRenderer *lineRenderer = self.bezierStruct.renderer;
 
-    NUChartRenderStructure *bezierStructure = self.bezierStruct;
-    NUChartRenderStructure *pointStructure = self.startPointStruct;
+    NUChartLineRenderReference *bezierStructure = self.bezierStruct;
+    NUChartPointRenderReference *pointStructure = self.startPointStruct;
 
     NUChartData *defaultData = self.bezierData;
     NUChartData *newData = [[NUChartData alloc] initWithxValues:@[@(0),@(50),@(100),@(150)]
@@ -132,7 +132,7 @@
 
 #pragma mark - Curve creation
 
-- (NUChartRenderStructure *)addBezierCurve:(NUChartView *)view
+- (NUChartLineRenderReference *)addBezierCurve:(NUChartView *)view
 {
     self.bezierData = [[NUChartData alloc] initWithxValues:@[@(0),@(50),@(100),@(150)]
                                                    yValues:@[@(0),@(100),@(0),@(100)]];
@@ -145,8 +145,8 @@
                withRenderer:renderer];
 }
 
-- (NUChartRenderStructure *)addAverageLine:(NUChartView *)view
-                              atSameAxisAs:(NUChartRenderStructure *)sibling
+- (NUChartLineRenderReference *)addAverageLine:(NUChartView *)view
+                              atSameAxisAs:(NUChartRenderReference *)sibling
 {
     NUChartData *average = [[NUChartData alloc] initWithxValues:@[@(0),@(150)]
                                                         yValues:@[@(50),@(50)]];
@@ -161,8 +161,8 @@
                       axisY:sibling.yAxis];
 }
 
-- (NUChartRenderStructure *)addStartPoint:(NUChartView *)view
-                             atSameAxisAs:(NUChartRenderStructure *)sibling
+- (NUChartPointRenderReference *)addStartPoint:(NUChartView *)view
+                             atSameAxisAs:(NUChartRenderReference *)sibling
 {
     NUChartData *points = [[NUChartData alloc] initWithxValues:@[@(0)]
                                                        yValues:@[@(0)]];
@@ -176,8 +176,8 @@
                       axisY:sibling.yAxis];
 }
 
-- (NUChartRenderStructure *)addEndPoint:(NUChartView *)view
-                           atSameAxisAs:(NUChartRenderStructure *)sibling
+- (NUChartPointRenderReference *)addEndPoint:(NUChartView *)view
+                           atSameAxisAs:(NUChartRenderReference *)sibling
 {
     NUChartData *points = [[NUChartData alloc] initWithxValues:@[@(150)]
                                                        yValues:@[@(100)]];
