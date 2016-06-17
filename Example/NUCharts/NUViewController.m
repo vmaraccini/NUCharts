@@ -45,9 +45,6 @@
 
     NUChartLineRenderReference *bezierStructure = self.bezierStruct;
     NUChartPointRenderReference *pointStructure = self.startPointStruct;
-    NUChartPointRenderReference *endPoint = self.endPointStruct;
-
-    NUChartView *chartView = self.chartView;
 
     NUChartData *defaultData = self.bezierData;
     NUChartData *newData = [[NUChartData alloc] initWithxValues:@[@(0),@(50),@(100),@(150)]
@@ -172,7 +169,7 @@
     axisTickRenderer.strokeColor = [UIColor blackColor];
     axisRenderer.tickRenderer = axisTickRenderer;
 
-    reference.yAxis.renderer = axisRenderer;
+    reference.xAxis.renderer = axisRenderer;
 
     return reference;
 }
