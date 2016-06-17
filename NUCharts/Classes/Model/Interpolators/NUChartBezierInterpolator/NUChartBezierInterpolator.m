@@ -154,7 +154,7 @@
     self.ctrlPoints1[count - 1] = [NSValue valueWithCGPoint:CGPointMake(lastCPX, lastCPY)];
 
     CGPoint nextCP;
-    for (int i = count - 2; i >= 0; i--) {
+    for (NSInteger i = count - 2; i >= 0; i--) {
         nextCP = self.ctrlPoints1[i+1].CGPointValue;
 
         CGFloat cpX =
