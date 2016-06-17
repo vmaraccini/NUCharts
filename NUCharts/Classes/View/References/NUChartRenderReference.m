@@ -96,12 +96,6 @@
     CAShapeLayer *xAxisLayer = [self drawxAxisAnimated:animated];
     CAShapeLayer *yAxisLayer = [self drawyAxisAnimated:animated];
 
-    if (self.dataLayer != dataLayer && dataLayer) {
-        [self.dataLayer removeFromSuperlayer];
-        [self.compositeLayer addSublayer:dataLayer];
-        self.dataLayer = dataLayer;
-    }
-
     if ((self.xAxisLayer != xAxisLayer) && xAxisLayer) {
         [self.xAxisLayer removeFromSuperlayer];
         [self.compositeLayer addSublayer:xAxisLayer];
@@ -112,6 +106,12 @@
         [self.yAxisLayer removeFromSuperlayer];
         [self.compositeLayer addSublayer:yAxisLayer];
         self.yAxisLayer = yAxisLayer;
+    }
+
+    if (self.dataLayer != dataLayer && dataLayer) {
+        [self.dataLayer removeFromSuperlayer];
+        [self.compositeLayer addSublayer:dataLayer];
+        self.dataLayer = dataLayer;
     }
 
     return self.compositeLayer;
