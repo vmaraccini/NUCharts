@@ -14,7 +14,6 @@
 
 @interface NUViewController ()
 @property (nonatomic, strong) NUChartView *chartView;
-@property (nonatomic, strong) UIView *occludingView;
 
 @property (nonatomic, strong) NUChartData *bezierData;
 
@@ -34,11 +33,6 @@
     [self createChart];
     [self createButton];
 
-    self.occludingView = [UIView new];
-    self.occludingView.frame = CGRectMake(20, 20, 20, 20);
-    self.occludingView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:self.occludingView];
-
     [self setupAnimations];
 }
 
@@ -52,6 +46,8 @@
     NUChartLineRenderReference *bezierStructure = self.bezierStruct;
     NUChartPointRenderReference *pointStructure = self.startPointStruct;
     NUChartPointRenderReference *endPoint = self.endPointStruct;
+
+    NUChartView *chartView = self.chartView;
 
     NUChartData *defaultData = self.bezierData;
     NUChartData *newData = [[NUChartData alloc] initWithxValues:@[@(0),@(50),@(100),@(150)]
@@ -95,11 +91,7 @@
 
     [self.animator addAnimations:^{
         [bezierStructure updatexRange:NUMakeRange(0,200)
-                            animated:YES];
-    }];
-
-    [self.animator addAnimations:^{
-        self.occludingView.frame = [self.chartView rectForReference:endPoint];
+                             animated:YES];
     }];
 
     self.animator.initializationBlock();
@@ -126,6 +118,8 @@
 
 - (void)createChart {
     self.chartView = [NUChartView new];
+    self.chartView.adjustsMarginsToFitContent = YES;
+
     [self.view addSubview:self.chartView];
 
     self.bezierStruct = [self addBezierCurve:self.chartView];
@@ -152,12 +146,39 @@
     renderer.lineWidth = 2;
     renderer.interpolator = [NUChartFlatYBezierInterpolator new];
 
-    return [view addDataSet:self.bezierData
-               withRenderer:renderer];
+    NUChartLineRenderReference *reference =  [view addDataSet:self.bezierData
+                                                 withRenderer:renderer];
+
+    NUChartAxisRenderer *axisRenderer = [NUChartAxisRenderer new];
+    axisRenderer.displaysAxisMinorLines = YES;
+    axisRenderer.displaysAxisLine = YES;
+    axisRenderer.displaysAxisTicks = YES;
+
+    axisRenderer.minorLineFrequency = 10.f;
+    axisRenderer.tickFrequency = 25.f;
+
+    NUChartLineRenderer *lineRenderer = [NUChartLineRenderer new];
+    lineRenderer.lineWidth = .5f;
+    lineRenderer.strokeColor = [UIColor blackColor];
+    axisRenderer.minorLinesRenderer = lineRenderer;
+
+    NUChartLineRenderer *axisLineRenderer = [NUChartLineRenderer new];
+    axisLineRenderer.lineWidth = 1.f;
+    axisLineRenderer.strokeColor = [UIColor blackColor];
+    axisRenderer.axisLineRenderer = axisLineRenderer;
+
+    NUChartLineRenderer *axisTickRenderer = [NUChartLineRenderer new];
+    axisTickRenderer.lineWidth = 1.f;
+    axisTickRenderer.strokeColor = [UIColor blackColor];
+    axisRenderer.tickRenderer = axisTickRenderer;
+
+    reference.yAxis.renderer = axisRenderer;
+
+    return reference;
 }
 
 - (NUChartLineRenderReference *)addAverageLine:(NUChartView *)view
-                              atSameAxisAs:(NUChartRenderReference *)sibling
+                                  atSameAxisAs:(NUChartRenderReference *)sibling
 {
     NUChartData *average = [[NUChartData alloc] initWithxValues:@[@(0),@(150)]
                                                         yValues:@[@(50),@(50)]];
@@ -173,7 +194,7 @@
 }
 
 - (NUChartPointRenderReference *)addStartPoint:(NUChartView *)view
-                             atSameAxisAs:(NUChartRenderReference *)sibling
+                                  atSameAxisAs:(NUChartRenderReference *)sibling
 {
     NUChartData *points = [[NUChartData alloc] initWithxValues:@[@(0)]
                                                        yValues:@[@(0)]];
@@ -188,7 +209,7 @@
 }
 
 - (NUChartPointRenderReference *)addEndPoint:(NUChartView *)view
-                           atSameAxisAs:(NUChartRenderReference *)sibling
+                                atSameAxisAs:(NUChartRenderReference *)sibling
 {
     NUChartData *points = [[NUChartData alloc] initWithxValues:@[@(150)]
                                                        yValues:@[@(100)]];
