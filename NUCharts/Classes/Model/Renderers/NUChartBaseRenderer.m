@@ -15,22 +15,43 @@
 
 @implementation NUChartBaseRenderer
 
-- (CAShapeLayer *)drawData:(NUChartData *)data
-                    xRange:(NUChartRange *)xRange
-                    yRange:(NUChartRange *)yRange
-                    bounds:(CGRect)bounds
+- (nullable CAShapeLayer *)updatePath:(CGPathRef)path
+                               bounds:(CGRect)bounds
+                             animated:(BOOL)animated
+
+{
+    if (!self.shapeLayer) {
+        return [self drawPath:path bounds:bounds];
+    } else {
+        if (!animated && !self.batch) {
+            [CATransaction begin];
+            [CATransaction setAnimationDuration:0];
+        }
+
+        self.shapeLayer.path = path;
+        [self willUpdate];
+
+        if (!animated && !self.batch) {
+            [CATransaction commit];
+        }
+
+        return self.shapeLayer;
+    }
+}
+
+- (nullable CAShapeLayer *)drawPath:(CGPathRef)path
+                             bounds:(CGRect)bounds
 {
     if (CGRectIsEmpty(bounds)) {
         return nil;
     }
 
-    CGPathRef path = [self pathForData:data
-                            withxRange:xRange
-                                yRange:yRange
-                                bounds:bounds];
+    if (!self.shapeLayer) {
+        self.shapeLayer = [CAShapeLayer layer];
+    }
 
-    self.shapeLayer = [CAShapeLayer layer];
     self.shapeLayer.path = path;
+    [self willUpdate];
 
     return self.shapeLayer;
 }
@@ -51,32 +72,34 @@
 {
 
     if (!self.shapeLayer) {
-        return [self drawData:data
-                       xRange:xRange
-                       yRange:yRange
-                       bounds:bounds];
+        CGPathRef path = [self pathForData:data
+                                withxRange:xRange
+                                    yRange:yRange
+                                    bounds:bounds];
+        [self willUpdate];
+
+        return [self drawPath:path bounds:bounds];
     }
 
-    if (!animated && !self.batch) {
-        [CATransaction begin];
-        [CATransaction setAnimationDuration:0];
-    }
+    CGPathRef newPath = [self pathForData:data
+                               withxRange:xRange
+                                   yRange:yRange
+                                   bounds:bounds];
 
-    self.shapeLayer.path = [self pathForData:data
-                                  withxRange:xRange
-                                      yRange:yRange
-                                      bounds:bounds];
+    [self updatePath:newPath bounds:bounds animated:animated];
 
-    if (!animated && !self.batch) {
-        [CATransaction commit];
-    }
-
+    [self willUpdate];
     return self.shapeLayer;
 }
 
-- (CGRect)rectForData
+- (CGRect)boundingRect
 {
     return CGPathGetPathBoundingBox(self.shapeLayer.path);
+}
+
+- (void)willUpdate
+{
+    [self.delegate rendererWillUpdate:self];
 }
 
 #pragma mark - Base shape animation

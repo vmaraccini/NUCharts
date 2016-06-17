@@ -14,4 +14,7 @@ extern NSString *const kNUChartAxisRangeKey;
 
 - (void)updateRange:(NUChartRange *)range;
 
+- (void)drawAxisForBounds:(CGRect)bounds
+                 animated:(BOOL)animated;
+
 @end

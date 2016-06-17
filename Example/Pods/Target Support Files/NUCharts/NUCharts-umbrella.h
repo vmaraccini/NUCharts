@@ -10,6 +10,7 @@
 #import "NUChartLinearInterpolator.h"
 #import "NUChartPointInterpolator.h"
 #import "NUChartProtocols.h"
+#import "NUChartAxisRenderer.h"
 #import "NUChartBaseRenderer.h"
 #import "NUChartLineRenderer.h"
 #import "NUChartPointRenderer.h"

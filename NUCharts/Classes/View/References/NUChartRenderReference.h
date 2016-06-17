@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NUChartAxis *yAxis;
 
 @property (nonatomic, readonly) NUChartData *data;
-@property (nonatomic, readonly) id<NUChartRenderer> renderer;
+@property (nonatomic, readonly) id<NUChartDataRenderer> renderer;
 
 //Update methods
 - (void)updateData:(NUChartData *)data animated:(BOOL)animated;
@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (__kindof NUChartRenderReference *)renderReferenceForxAxis:(NUChartAxis *)xAxis
                                                        yAxis:(NUChartAxis *)yAxis
                                                         data:(NUChartData *)data
-                                                    renderer:(id<NUChartRenderer>)renderer
+                                                    renderer:(id<NUChartDataRenderer>)renderer
                                                       bounds:(CGRect)bounds;
 @end
 

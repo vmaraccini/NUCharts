@@ -55,20 +55,22 @@
                                    bounds:bounds];
 }
 
-- (CAShapeLayer *)drawData:(NUChartData *)data
-                    xRange:(NUChartRange *)xRange
-                    yRange:(NUChartRange *)yRange
-                    bounds:(CGRect)bounds
+- (CAShapeLayer *)updateData:(NUChartData *)data
+                      xRange:(NUChartRange *)xRange
+                      yRange:(NUChartRange *)yRange
+                      bounds:(CGRect)bounds
+                    animated:(BOOL)animated
 {
     _data = data;
     _xRange = xRange;
     _yRange = yRange;
     _bounds = bounds;
 
-    [super drawData:data
-             xRange:xRange
-             yRange:yRange
-             bounds:bounds];
+    [super updateData:data
+               xRange:xRange
+               yRange:yRange
+               bounds:bounds
+             animated:animated];
 
     self.shapeLayer.delegate = self;
 
@@ -79,22 +81,9 @@
     return self.shapeLayer;
 }
 
-- (CAShapeLayer *)updateData:(NUChartData *)data
-                      xRange:(NUChartRange *)xRange
-                      yRange:(NUChartRange *)yRange
-                      bounds:(CGRect)bounds
-                    animated:(BOOL)animated
+- (CGFloat)requiredMargin
 {
-    self.data = data;
-    self.xRange = xRange;
-    self.yRange = yRange;
-    self.bounds = bounds;
-
-    return [super updateData:data
-                      xRange:xRange
-                      yRange:yRange
-                      bounds:bounds
-                    animated:animated];
+    return self.diameter / 2.f + self.lineWidth;
 }
 
 #pragma mark - Animations
@@ -152,18 +141,21 @@
 {
     _strokeColor = strokeColor;
     self.shapeLayer.strokeColor = strokeColor.CGColor;
+    [super willUpdate];
 }
 
 - (void)setLineWidth:(CGFloat)lineWidth
 {
     _lineWidth = lineWidth;
     self.shapeLayer.lineWidth = lineWidth;
+    [super willUpdate];
 }
 
 - (void)setFillColor:(UIColor *)fillColor
 {
     _fillColor = fillColor;
     self.shapeLayer.fillColor = fillColor.CGColor;
+    [super willUpdate];
 }
 
 @end

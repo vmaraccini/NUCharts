@@ -9,8 +9,10 @@
 #import "NUChartView.h"
 #import "NUChartRenderReference_Private.h"
 
-@interface NUChartView ()
+@interface NUChartView () <NUChartRendererDelegate>
 @property (nonatomic, strong) NSMutableArray<NUChartRenderReference *>*renderStructures;
+@property (nonatomic, strong) UIView *containerView;
+@property (nonatomic) UIEdgeInsets insets;
 @end
 
 @implementation NUChartView
@@ -20,11 +22,22 @@
     self = [super init];
     if (self) {
         _renderStructures = [NSMutableArray new];
+        _containerView = [UIView new];
+        [self addSubview:_containerView];
+
+        self.clipsToBounds = YES;
     }
     return self;
 }
 
-- (void)setBounds:(CGRect)bounds {
+-(void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    _containerView.frame = self.frame;
+}
+
+- (void)setBounds:(CGRect)bounds
+{
     [super setBounds:bounds];
 
     for (NUChartRenderReference *reference in self.renderStructures) {
@@ -35,7 +48,8 @@
 }
 
 -(__kindof NUChartRenderReference *)addDataSet:(NUChartData *)data
-                                  withRenderer:(id<NUChartRenderer>)renderer {
+                                  withRenderer:(id<NUChartDataRenderer>)renderer
+{
     return [self addDataSet:data
                withRenderer:renderer
                     toAxisX:[[NUChartAxis alloc] initWithRange:[NUChartRange fullXRangeForData:data]]
@@ -43,7 +57,7 @@
 }
 
 - (__kindof NUChartRenderReference *)addDataSet:(NUChartData *)data
-                                   withRenderer:(id<NUChartRenderer>)renderer
+                                   withRenderer:(id<NUChartDataRenderer>)renderer
                                         toAxisX:(nonnull NUChartAxis *)xAxis
                                           axisY:(nonnull NUChartAxis *)yAxis
 {
@@ -54,6 +68,7 @@
                                                       data:data
                                                   renderer:renderer
                                                     bounds:self.bounds];
+    renderer.delegate = self;
 
     [self.renderStructures addObject:reference];
     [self drawChart];
@@ -67,7 +82,15 @@
 
 - (CGRect)rectForReference:(NUChartRenderReference *)reference
 {
-    return [self convertRect:[reference.renderer rectForData] toView:self.superview];
+    return [self.containerView convertRect:[reference.renderer boundingRect]
+                                      toView:self.superview];
+}
+
+- (void)rendererWillUpdate:(id<NUChartRenderer>)renderer
+{
+    if (self.adjustsMarginsToFitContent) {
+        [self updateMargins];
+    }
 }
 
 #pragma mark - Private
@@ -75,14 +98,30 @@
 - (void)drawChart {
 
     //Remove existing layers
-    [[self.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    [[self.containerView.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
 
     [self.renderStructures enumerateObjectsUsingBlock:^(NUChartRenderReference * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //Data
         CAShapeLayer *shapeLayer = [obj drawAnimated:YES];
         if (shapeLayer) {
-            [self.layer addSublayer:shapeLayer];
+            [self.containerView.layer addSublayer:shapeLayer];
         }
     }];
+}
+
+- (void)updateMargins
+{
+    __block CGFloat margin = 0;
+    [self.renderStructures enumerateObjectsUsingBlock:^(NUChartRenderReference * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        margin = MAX(margin, obj.renderer.requiredMargin);
+        margin = MAX(margin, obj.xAxis.renderer.requiredMargin);
+        margin = MAX(margin, obj.yAxis.renderer.requiredMargin);
+    }];
+
+    CGAffineTransform transform = CGAffineTransformMakeScale((self.bounds.size.width - 2*margin) / self.bounds.size.width,
+                                                             (self.bounds.size.height - 2*margin) / self.bounds.size.height);
+    transform = CGAffineTransformTranslate(transform, margin, margin);
+    self.containerView.transform = transform;
 }
 
 @end

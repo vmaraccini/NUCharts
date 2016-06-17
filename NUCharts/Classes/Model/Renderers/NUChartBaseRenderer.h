@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NUChartBaseRenderer : NSObject <NUChartRenderer>
+@interface NUChartBaseRenderer : NSObject <NUChartDataRenderer>
 
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
 
@@ -21,8 +21,14 @@ NS_ASSUME_NONNULL_BEGIN
                   yRange:(NUChartRange *)yRange
                   bounds:(CGRect)bounds;
 
+- (nullable CAShapeLayer *)drawPath:(CGPathRef)path
+                             bounds:(CGRect)bounds;
+
 - (void)startBatchAnimations;
 - (void)endBatchAnimations;
+
+@property (nonatomic, weak) id<NUChartRendererDelegate> delegate;
+- (void)willUpdate;
 
 @end
 

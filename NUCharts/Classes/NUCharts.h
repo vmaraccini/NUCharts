@@ -16,6 +16,7 @@
 
 #import "NUChartLineRenderer.h"
 #import "NUChartPointRenderer.h"
+#import "NUChartAxisRenderer.h"
 
 #import "NUChartData.h"
 #import "NUChartAxis.h"

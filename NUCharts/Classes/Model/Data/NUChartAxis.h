@@ -7,6 +7,7 @@
 //
 
 #import "NUChartData.h"
+#import "NUChartProtocols.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NUChartAxis : NSObject
 @property (nonatomic, readonly) NUChartRange *range;
+
+@property (nonatomic, strong) id<NUChartAxisRenderer> renderer;
 
 - (instancetype)initWithRange:(NUChartRange *)range;
 

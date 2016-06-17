@@ -10,4 +10,6 @@
 @property (nonatomic, readwrite) CGRect bounds;
 
 - (CAShapeLayer *)drawAnimated:(BOOL)animated;
+- (CAShapeLayer *)drawxAxisAnimated:(BOOL)animated;
+- (CAShapeLayer *)drawyAxisAnimated:(BOOL)animated;
 @end

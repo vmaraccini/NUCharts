@@ -41,11 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setStrokeEnd:(CGFloat)strokeEnd animated:(BOOL)animated;
 
-//Animations
-//- (void)animateBuildX;
-//- (void)animateBuildY;
-//- (void)animateBuildXY;
-
 @end
 
 NS_ASSUME_NONNULL_END

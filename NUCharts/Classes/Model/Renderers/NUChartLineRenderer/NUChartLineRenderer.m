@@ -43,15 +43,11 @@
                                    bounds:bounds];
 }
 
-- (CAShapeLayer *)drawData:(NUChartData *)data
-                    xRange:(NUChartRange *)xRange
-                    yRange:(NUChartRange *)yRange
-                    bounds:(CGRect)bounds
+- (nullable CAShapeLayer *)drawPath:(CGPathRef)path
+                      bounds:(CGRect)bounds
 {
-    [super drawData:data
-             xRange:xRange
-             yRange:yRange
-             bounds:bounds];
+    [super drawPath:path
+               bounds:bounds];
 
     self.shapeLayer.lineDashPattern = self.dashPattern;
     self.shapeLayer.lineDashPhase = self.dashPhase;
@@ -63,10 +59,22 @@
 
     self.shapeLayer.delegate = self;
 
+    [super willUpdate];
+    
     return self.shapeLayer;
 }
 
+- (CGFloat)requiredMargin
+{
+    return self.lineWidth / 2.f;
+}
+
 #pragma mark - Getter/setter
+
+- (void)setShapeLayer:(CAShapeLayer *)shapeLayer
+{
+    [super setShapeLayer:shapeLayer];
+}
 
 - (void)setStrokeEnd:(CGFloat)strokeEnd {
     [self setStrokeEnd:strokeEnd animated:YES];
@@ -79,6 +87,7 @@
     }
     _strokeEnd = strokeEnd;
     self.shapeLayer.strokeEnd = strokeEnd;
+    [super willUpdate];
     if (!animated) {
         [CATransaction commit];
     }
@@ -88,41 +97,29 @@
 {
     _strokeColor = strokeColor;
     self.shapeLayer.strokeColor = strokeColor.CGColor;
+    [super willUpdate];
 }
 
 - (void)setLineWidth:(CGFloat)lineWidth
 {
     _lineWidth = lineWidth;
     self.shapeLayer.lineWidth = lineWidth;
+    [super willUpdate];
 }
 
 - (void)setDashPattern:(NSArray<NSNumber *> *)dashPattern
 {
     _dashPattern = dashPattern;
     self.shapeLayer.lineDashPattern = dashPattern;
+    [super willUpdate];
 }
 
 - (void)setDashPhase:(CGFloat)dashPhase
 {
     _dashPhase = dashPhase;
     self.shapeLayer.lineDashPhase = dashPhase;
+    [super willUpdate];
 }
-
-#pragma mark - Animations
-
-//- (void)animateBuildX
-//{
-//    [self.interpolator animateBuildX];
-//}
-//- (void)animateBuildY
-//{
-//    [self.interpolator animateBuildY];
-//}
-//- (void)animateBuildXY
-//{
-//    [self.interpolator animateBuildX];
-//    [self.interpolator animateBuildY];
-//}
 
 #pragma mark - Private
 

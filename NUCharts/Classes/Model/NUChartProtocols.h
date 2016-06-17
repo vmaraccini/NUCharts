@@ -12,7 +12,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class NUChartRange;
+typedef NS_ENUM(NSUInteger, NUChartAxisPriority) {
+    NUChartAxisPriorityPrimary, //Left for Y, Bottom for X
+    NUChartAxisPrioritySecondary, //Right for Y, Top for X
+};
+
+typedef NS_ENUM(NSUInteger, NUChartAxisOrientation) {
+    NUChartAxisOrientationX,
+    NUChartAxisOrientationY,
+};
+
+@class NUChartRange, NUChartAxis;
 
 // Interpolator
 
@@ -26,20 +36,50 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Renderer
 
+@protocol NUChartRendererDelegate;
 @protocol NUChartRenderer <NSObject>
-///Override point. Renders the data set into the rectangle determined by @c bounds and returns a CAShapeLayer
-- (nullable CAShapeLayer *)drawData:(NUChartData *)data
-                             xRange:(NUChartRange *)xRange
-                             yRange:(NUChartRange *)yRange
-                             bounds:(CGRect)bounds;
 
+@property (nonatomic, weak) id<NUChartRendererDelegate>delegate;
+
+- (nullable CAShapeLayer *)updatePath:(CGPathRef)path
+                               bounds:(CGRect)bounds
+                             animated:(BOOL)animated;
+
+///Returns the bouding rect of this renderer's representation
+- (CGRect)boundingRect;
+
+///Returns the required margin to fit the content being displayed
+- (CGFloat)requiredMargin;
+
+@end
+
+@protocol NUChartRendererDelegate <NSObject>
+///Called when renderers update their internal views
+- (void)rendererWillUpdate:(id<NUChartRenderer>)renderer;
+@end
+
+@protocol NUChartDataRenderer <NUChartRenderer>
+
+///Renders a data set into the rectangle determined by @c bounds and returns a CAShapeLayer
 - (nullable CAShapeLayer *)updateData:(NUChartData *)data
                                xRange:(NUChartRange *)xRange
                                yRange:(NUChartRange *)yRange
                                bounds:(CGRect)bounds
                              animated:(BOOL)animated;
 
-- (CGRect)rectForData;
+@end
+
+@protocol NUChartAxisRenderer <NSObject>
+
+///Returns the required margin to fit the content being displayed
+- (CGFloat)requiredMargin;
+
+///Renders an axis into the rectangle determined by @c bounds and returns a CAShapeLayer
+- (CAShapeLayer *)updateAxis:(NUChartAxis *)axis
+             orthogonalRange:(NUChartRange *)orthogonalRange
+                 orientation:(NUChartAxisOrientation)orientation
+                      bounds:(CGRect)bounds
+                    animated:(BOOL)animated;
 
 @end
 
