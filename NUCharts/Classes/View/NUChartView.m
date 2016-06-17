@@ -101,11 +101,9 @@
     [[self.containerView.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
 
     [self.renderStructures enumerateObjectsUsingBlock:^(NUChartRenderReference * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        //Data
-        CAShapeLayer *shapeLayer = [obj drawAnimated:YES];
-        if (shapeLayer) {
-            [self.containerView.layer addSublayer:shapeLayer];
-        }
+        [self.containerView.layer insertSublayer:[obj drawxAxisAnimated:YES] atIndex:0];
+        [self.containerView.layer insertSublayer:[obj drawyAxisAnimated:YES] atIndex:0];
+        [self.containerView.layer addSublayer:[obj drawAnimated:YES]];
     }];
 }
 

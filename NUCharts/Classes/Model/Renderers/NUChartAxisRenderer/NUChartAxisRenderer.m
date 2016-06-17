@@ -19,6 +19,9 @@
 @property (nonatomic, strong) CAShapeLayer *ticksLayer;
 @property (nonatomic, strong) CAShapeLayer *majorLinesLayer;
 @property (nonatomic, strong) CAShapeLayer *minorLinesLayer;
+
+@property (nonatomic, readwrite) CGFloat oldXScaleFactor;
+@property (nonatomic, readwrite) CGFloat oldYScaleFactor;
 @end
 
 @implementation NUChartAxisRenderer
@@ -35,6 +38,7 @@
 
     if (!self.shapeLayer) {
         self.shapeLayer = [CAShapeLayer layer];
+        animated = NO;
     }
 
     [CATransaction begin];
@@ -106,8 +110,8 @@
     if (self.displaysAxisMajorLines) {
         CGPathRef path = [self axisMajorLinesForAxis:axis
                                      orthogonalRange:orthogonalRange
-                                        xScaleFactor:xScaleFactor
-                                        yScaleFactor:yScaleFactor];
+                                        xScaleFactor:animated ? self.oldXScaleFactor : xScaleFactor
+                                        yScaleFactor:animated ? self.oldYScaleFactor : yScaleFactor];
 
         CAShapeLayer *shape = [self.majorLinesRenderer updatePath:path
                                                            bounds:bounds
@@ -122,8 +126,8 @@
     if (self.displaysAxisMinorLines) {
         CGPathRef path = [self axisMinorLinesForAxis:axis
                                      orthogonalRange:orthogonalRange
-                                        xScaleFactor:xScaleFactor
-                                        yScaleFactor:yScaleFactor];
+                                        xScaleFactor:animated ? self.oldXScaleFactor : xScaleFactor
+                                        yScaleFactor:animated ? self.oldYScaleFactor : yScaleFactor];
 
         CAShapeLayer *shape = [self.minorLinesRenderer updatePath:path
                                                            bounds:bounds
@@ -136,13 +140,42 @@
         }
     }
 
-    if (!animated) {
-        self.shapeLayer.affineTransform = self.axisTransform;
-        [CATransaction commit];
-    } else {
-        [CATransaction commit];
-        self.shapeLayer.affineTransform = self.axisTransform;
+    self.shapeLayer.affineTransform = self.axisTransform;
+
+    [CATransaction commit];
+
+    //Update ranges separately for animations to work
+    if (animated) {
+        CGPathRef majorPath = [self axisMajorLinesForAxis:axis
+                                          orthogonalRange:orthogonalRange
+                                             xScaleFactor:xScaleFactor
+                                             yScaleFactor:yScaleFactor];
+
+        [self.majorLinesRenderer updatePath:majorPath
+                                     bounds:bounds
+                                   animated:animated];
+
+        CGPathRef minorPath = [self axisMinorLinesForAxis:axis
+                                          orthogonalRange:orthogonalRange
+                                             xScaleFactor:xScaleFactor
+                                             yScaleFactor:yScaleFactor];
+
+        [self.minorLinesRenderer updatePath:minorPath
+                                     bounds:bounds
+                                   animated:animated];
+
+        CGPathRef ticksPath = [self axisMinorLinesForAxis:axis
+                                          orthogonalRange:orthogonalRange
+                                             xScaleFactor:xScaleFactor
+                                             yScaleFactor:yScaleFactor];
+
+        [self.minorLinesRenderer updatePath:ticksPath
+                                     bounds:bounds
+                                   animated:animated];
     }
+
+    self.oldXScaleFactor = xScaleFactor;
+    self.oldYScaleFactor = yScaleFactor;
 
     return self.shapeLayer;
 }
@@ -155,19 +188,6 @@
     margin = MAX(margin, self.majorLinesRenderer.requiredMargin);
 
     return margin;
-}
-
-#pragma mark - Animations
-
--(id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event {
-    if ([event isEqualToString:@"path"]) {
-        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:event];
-        CGPathRef from = self.shapeLayer.path;
-
-        animation.fromValue = (__bridge id _Nullable)from;
-        return animation;
-    }
-    return nil;
 }
 
 #pragma mark - Path creation

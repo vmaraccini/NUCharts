@@ -57,8 +57,6 @@
 
     self.shapeLayer.strokeEnd = self.strokeEnd;
 
-    self.shapeLayer.delegate = self;
-
     [super willUpdate];
     
     return self.shapeLayer;

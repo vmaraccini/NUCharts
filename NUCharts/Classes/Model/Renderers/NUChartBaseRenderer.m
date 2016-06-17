@@ -48,6 +48,7 @@
 
     if (!self.shapeLayer) {
         self.shapeLayer = [CAShapeLayer layer];
+        self.shapeLayer.delegate = self;
     }
 
     self.shapeLayer.path = path;

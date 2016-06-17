@@ -13,8 +13,6 @@
 @interface NUChartRenderReference()
 @property (nonatomic, readwrite) CGRect bounds;
 
-@property (nonatomic, strong) CAShapeLayer *compositeLayer;
-
 @property (nonatomic, weak) CAShapeLayer *dataLayer;
 @property (nonatomic, weak) CAShapeLayer *xAxisLayer;
 @property (nonatomic, weak) CAShapeLayer *yAxisLayer;
@@ -83,80 +81,35 @@
 
 - (CAShapeLayer *)drawAnimated:(BOOL)animated
 {
-    if (!self.compositeLayer) {
-        return [self createCompositeLayer];
-    }
+    self.dataLayer = [self.renderer updateData:self.data
+                                        xRange:self.xAxis.range
+                                        yRange:self.yAxis.range
+                                        bounds:self.bounds
+                                      animated:animated];
 
-    CAShapeLayer *dataLayer = [self.renderer updateData:self.data
-                                                 xRange:self.xAxis.range
-                                                 yRange:self.yAxis.range
-                                                 bounds:self.bounds
-                                               animated:animated];
-
-    CAShapeLayer *xAxisLayer = [self drawxAxisAnimated:animated];
-    CAShapeLayer *yAxisLayer = [self drawyAxisAnimated:animated];
-
-    if ((self.xAxisLayer != xAxisLayer) && xAxisLayer) {
-        [self.xAxisLayer removeFromSuperlayer];
-        [self.compositeLayer addSublayer:xAxisLayer];
-        self.xAxisLayer = xAxisLayer;
-    }
-
-    if ((self.yAxisLayer != yAxisLayer) && yAxisLayer) {
-        [self.yAxisLayer removeFromSuperlayer];
-        [self.compositeLayer addSublayer:yAxisLayer];
-        self.yAxisLayer = yAxisLayer;
-    }
-
-    if (self.dataLayer != dataLayer && dataLayer) {
-        [self.dataLayer removeFromSuperlayer];
-        [self.compositeLayer addSublayer:dataLayer];
-        self.dataLayer = dataLayer;
-    }
-
-    return self.compositeLayer;
-}
-
-- (CAShapeLayer *)createCompositeLayer
-{
-    self.compositeLayer = [CAShapeLayer layer];
-
-    //Axes
-    CAShapeLayer *xAxisLayer = [self drawxAxisAnimated:NO];
-    if (xAxisLayer) {
-        [self.compositeLayer addSublayer:xAxisLayer];
-    }
-
-    CAShapeLayer *yAxisLayer = [self drawyAxisAnimated:NO];
-    if (yAxisLayer) {
-        [self.compositeLayer addSublayer:yAxisLayer];
-    }
-
-    [self.compositeLayer addSublayer:[self.renderer updateData:self.data
-                                                        xRange:self.xAxis.range
-                                                        yRange:self.yAxis.range
-                                                        bounds:self.bounds
-                                                      animated:NO]];
-
-    return self.compositeLayer;
+    return self.dataLayer;
 }
 
 - (CAShapeLayer *)drawxAxisAnimated:(BOOL)animated
 {
-    return [self.xAxis.renderer updateAxis:self.xAxis
-                           orthogonalRange:self.yAxis.range
-                               orientation:NUChartAxisOrientationX
-                                    bounds:self.bounds
-                                  animated:animated];
+    self.xAxisLayer = [self.xAxis.renderer updateAxis:self.xAxis
+                                      orthogonalRange:self.yAxis.range
+                                          orientation:NUChartAxisOrientationX
+                                               bounds:self.bounds
+                                             animated:animated];
+
+    return self.xAxisLayer;
 }
 
 - (CAShapeLayer *)drawyAxisAnimated:(BOOL)animated
 {
-    return [self.yAxis.renderer updateAxis:self.yAxis
-                           orthogonalRange:self.yAxis.range
-                               orientation:NUChartAxisOrientationY
-                                    bounds:self.bounds
-                                  animated:animated];
+    self.yAxisLayer = [self.yAxis.renderer updateAxis:self.yAxis
+                                      orthogonalRange:self.xAxis.range
+                                          orientation:NUChartAxisOrientationY
+                                               bounds:self.bounds
+                                             animated:animated];
+
+    return self.yAxisLayer;
 }
 
 #pragma mark - KVO
@@ -168,6 +121,8 @@
 {
     if ([keyPath isEqualToString:kNUChartAxisRangeKey]) {
         [self drawAnimated:YES];
+        [self drawxAxisAnimated:YES];
+        [self drawyAxisAnimated:YES];
     }
 }
 

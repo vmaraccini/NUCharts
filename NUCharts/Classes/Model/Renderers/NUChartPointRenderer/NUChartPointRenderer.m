@@ -72,8 +72,6 @@
                bounds:bounds
              animated:animated];
 
-    self.shapeLayer.delegate = self;
-
     self.shapeLayer.fillColor = self.fillColor.CGColor;
     self.shapeLayer.lineWidth = self.lineWidth;
     self.shapeLayer.strokeColor = self.strokeColor.CGColor;
