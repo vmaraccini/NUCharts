@@ -6,13 +6,13 @@
 //  Copyright (c) 2016 Victor. All rights reserved.
 //
 
-#import "NUViewController.h"
+#import "NUAnimatedChartViewController.h"
 
 #import <NUCharts/NUCharts.h>
 #import <Masonry/Masonry.h>
 #import <NUAnimationKit/NUAnimationController.h>
 
-@interface NUViewController ()
+@interface NUAnimatedChartViewController ()
 @property (nonatomic, strong) NUChartView *chartView;
 
 @property (nonatomic, strong) NUChartData *bezierData;
@@ -24,11 +24,12 @@
 @property (nonatomic, strong) NUAnimationController *animator;
 @end
 
-@implementation NUViewController
+@implementation NUAnimatedChartViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
 
     [self createChart];
     [self createButton];

@@ -7,12 +7,25 @@
 //
 
 #import "NUAppDelegate.h"
+#import "NUTableViewController.h"
+
+@interface NUAppDelegate ()
+@property (nonatomic, strong) UIViewController *navigationController;
+@end
 
 @implementation NUAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:[NUTableViewController new]];
+
+    [self.window setRootViewController:self.navigationController];
+
+    [self.window makeKeyAndVisible];
+    [self setWindow:self.window];
     return YES;
 }
 

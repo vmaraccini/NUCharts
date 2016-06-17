@@ -103,6 +103,11 @@
     [self.delegate rendererWillUpdate:self];
 }
 
+- (CGFloat)requiredMargin
+{
+    return 0;
+}
+
 #pragma mark - Base shape animation
 
 -(id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event {

@@ -14,15 +14,15 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* NUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* NUAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* NUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* NUViewController.m */; };
+		6003F5A7195388D20070C39A /* NUAnimatedChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* NUAnimatedChartViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		BF3E38C5CF6F7C12F6358857 /* Pods_NUCharts_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19AAF9C04A62AE28D7557D2 /* Pods_NUCharts_Example.framework */; };
+		D4EF8C7D1D148A4A002544F0 /* NUTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EF8C7C1D148A4A002544F0 /* NUTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +47,8 @@
 		6003F59B195388D20070C39A /* NUCharts-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NUCharts-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* NUAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NUAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* NUAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NUAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* NUViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NUViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* NUViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NUViewController.m; sourceTree = "<group>"; };
+		6003F5A5195388D20070C39A /* NUAnimatedChartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NUAnimatedChartViewController.h; sourceTree = "<group>"; };
+		6003F5A6195388D20070C39A /* NUAnimatedChartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NUAnimatedChartViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* NUCharts_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NUCharts_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -56,11 +56,12 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		95B8E287CD69BCAB6135212F /* Pods_NUCharts_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NUCharts_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19AAF9C04A62AE28D7557D2 /* Pods_NUCharts_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NUCharts_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3534B2EA05CCB0E09E6A2C5 /* Pods-NUCharts_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NUCharts_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NUCharts_Tests/Pods-NUCharts_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C37B1EB6D134FE7A24BEE082 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D4EF8C7B1D148A4A002544F0 /* NUTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NUTableViewController.h; sourceTree = "<group>"; };
+		D4EF8C7C1D148A4A002544F0 /* NUTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NUTableViewController.m; sourceTree = "<group>"; };
 		E2A29E029220F3235F4A9CF5 /* Pods-NUCharts_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NUCharts_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NUCharts_Example/Pods-NUCharts_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E811316A36A8DA81BC5E3F14 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		FAF828B847A5E6D52AE8C184 /* Pods-NUCharts_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NUCharts_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NUCharts_Tests/Pods-NUCharts_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,11 +142,9 @@
 		6003F593195388D20070C39A /* Example for NUCharts */ = {
 			isa = PBXGroup;
 			children = (
+				D4EF8C7E1D148A56002544F0 /* ViewControllers */,
 				6003F59C195388D20070C39A /* NUAppDelegate.h */,
 				6003F59D195388D20070C39A /* NUAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* NUViewController.h */,
-				6003F5A6195388D20070C39A /* NUViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -191,6 +190,41 @@
 				C37B1EB6D134FE7A24BEE082 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		D4EF8C7E1D148A56002544F0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D4EF8C7B1D148A4A002544F0 /* NUTableViewController.h */,
+				D4EF8C7C1D148A4A002544F0 /* NUTableViewController.m */,
+				D4EF8C811D148A67002544F0 /* Axes */,
+				D4EF8C801D148A63002544F0 /* Basic */,
+				D4EF8C7F1D148A60002544F0 /* Animated */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D4EF8C7F1D148A60002544F0 /* Animated */ = {
+			isa = PBXGroup;
+			children = (
+				6003F5A5195388D20070C39A /* NUAnimatedChartViewController.h */,
+				6003F5A6195388D20070C39A /* NUAnimatedChartViewController.m */,
+			);
+			name = Animated;
+			sourceTree = "<group>";
+		};
+		D4EF8C801D148A63002544F0 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Basic;
+			sourceTree = "<group>";
+		};
+		D4EF8C811D148A67002544F0 /* Axes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Axes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +310,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -390,8 +423,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4EF8C7D1D148A4A002544F0 /* NUTableViewController.m in Sources */,
 				6003F59E195388D20070C39A /* NUAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* NUViewController.m in Sources */,
+				6003F5A7195388D20070C39A /* NUAnimatedChartViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

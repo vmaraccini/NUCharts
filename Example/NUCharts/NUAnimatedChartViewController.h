@@ -1,5 +1,5 @@
 //
-//  NUViewController.h
+//  NUAnimatedChartViewController.h
 //  NUCharts
 //
 //  Created by Victor on 05/29/2016.
@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface NUViewController : UIViewController
+@interface NUAnimatedChartViewController : UIViewController
 
 @end

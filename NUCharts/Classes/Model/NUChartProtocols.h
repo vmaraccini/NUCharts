@@ -8,7 +8,7 @@
 
 #import "NUChartData.h"
 
-#define NU_ABSTRACT_METHOD NSString *errorString = [NSString stringWithFormat:@"You must implement %@ in your subclass of NUChartBaseRenderer", __PRETTY_FUNCTION__];@throw [NSException exceptionWithName:@"Unimplemented method" reason:errorString userInfo:nil];
+#define NU_ABSTRACT_METHOD NSString *errorString = [NSString stringWithFormat:@"You must implement %s in your subclass of NUChartBaseRenderer", __PRETTY_FUNCTION__];@throw [NSException exceptionWithName:@"Unimplemented method" reason:errorString userInfo:nil];
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -75,7 +75,7 @@ typedef NS_ENUM(NSUInteger, NUChartAxisOrientation) {
 - (CGFloat)requiredMargin;
 
 ///Renders an axis into the rectangle determined by @c bounds and returns a CAShapeLayer
-- (CAShapeLayer *)updateAxis:(NUChartAxis *)axis
+- (nullable CAShapeLayer *)updateAxis:(NUChartAxis *)axis
              orthogonalRange:(NUChartRange *)orthogonalRange
                  orientation:(NUChartAxisOrientation)orientation
                       bounds:(CGRect)bounds
