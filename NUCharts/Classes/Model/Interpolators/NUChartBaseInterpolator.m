@@ -10,7 +10,7 @@
 #import "NUChartAxis.h"
 
 @interface NUChartBaseInterpolator ()
-@property (nonatomic, readwrite) CGPathRef mutablePath;
+@property (nonatomic, readwrite) CGMutablePathRef mutablePath;
 @property (nonatomic, readwrite) CGAffineTransform scaleTransform;
 @end
 

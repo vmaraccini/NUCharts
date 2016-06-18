@@ -273,7 +273,7 @@
                                xScaleFactor:(CGFloat)xScaleFactor
                                yScaleFactor:(CGFloat)yScaleFactor
 {
-    CGPathRef result = CGPathCreateMutable();
+    CGMutablePathRef result = CGPathCreateMutable();
     CGAffineTransform scale = CGAffineTransformMakeScale(xScaleFactor, yScaleFactor);
     for (int i = 0; i < lower.count; i++) {
         CGPoint lowerPoint = lower[i].CGPointValue;
