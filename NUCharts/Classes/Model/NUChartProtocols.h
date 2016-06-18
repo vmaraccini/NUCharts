@@ -28,10 +28,10 @@ typedef NS_ENUM(NSUInteger, NUChartAxisOrientation) {
 
 @protocol NUChartInterpolator <NSObject>
 ///Override point. Creates and returns a CGPath for the data set
-- (nullable CGPathRef)pathForData:(NUChartData *)data
-                           xRange:(NUChartRange *)xRange
-                           yRange:(NUChartRange *)yRange
-                           bounds:(CGRect)bounds CF_RETURNS_RETAINED;
+- (nullable CGPathRef)newPathForData:(NUChartData *)data
+                              xRange:(NUChartRange *)xRange
+                              yRange:(NUChartRange *)yRange
+                              bounds:(CGRect)bounds;
 @end
 
 // Renderer
@@ -76,10 +76,10 @@ typedef NS_ENUM(NSUInteger, NUChartAxisOrientation) {
 
 ///Renders an axis into the rectangle determined by @c bounds and returns a CAShapeLayer
 - (nullable CAShapeLayer *)updateAxis:(NUChartAxis *)axis
-             orthogonalRange:(NUChartRange *)orthogonalRange
-                 orientation:(NUChartAxisOrientation)orientation
-                      bounds:(CGRect)bounds
-                    animated:(BOOL)animated;
+                      orthogonalRange:(NUChartRange *)orthogonalRange
+                          orientation:(NUChartAxisOrientation)orientation
+                               bounds:(CGRect)bounds
+                             animated:(BOOL)animated;
 
 @end
 

@@ -11,7 +11,7 @@
 
 @interface NUChartView () <NUChartRendererDelegate>
 @property (nonatomic, strong) NSMutableArray<NUChartRenderReference *>*renderStructures;
-@property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, weak) UIView *containerView;
 @property (nonatomic) UIEdgeInsets insets;
 @end
 
@@ -21,19 +21,46 @@
 {
     self = [super init];
     if (self) {
-        _renderStructures = [NSMutableArray new];
-        _containerView = [UIView new];
-        [self addSubview:_containerView];
-
-        self.clipsToBounds = YES;
+        [self initialize];
     }
     return self;
 }
 
--(void)setFrame:(CGRect)frame
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (void)initialize
+{
+    _renderStructures = [NSMutableArray new];
+
+    UIView *containerView = [UIView new];
+    self.containerView = containerView;
+    [self addSubview:self.containerView];
+
+    self.clipsToBounds = YES;
+}
+
+#pragma mark - Overrides
+
+- (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    _containerView.frame = self.frame;
+    self.containerView.frame = self.frame;
 }
 
 - (void)setBounds:(CGRect)bounds
@@ -46,6 +73,8 @@
 
     [self drawChart];
 }
+
+#pragma mark - Public
 
 -(__kindof NUChartRenderReference *)addDataSet:(NUChartData *)data
                                   withRenderer:(id<NUChartDataRenderer>)renderer
@@ -86,6 +115,8 @@
                                       toView:self.superview];
 }
 
+#pragma mark - NUChartRendererDelegate
+
 - (void)rendererWillUpdate:(id<NUChartRenderer>)renderer
 {
     if (self.adjustsMarginsToFitContent) {
@@ -109,6 +140,10 @@
 
 - (void)updateMargins
 {
+    if (CGRectIsEmpty(self.bounds)) {
+        return;
+    }
+
     __block CGFloat margin = 0;
     [self.renderStructures enumerateObjectsUsingBlock:^(NUChartRenderReference * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         margin = MAX(margin, obj.renderer.requiredMargin);

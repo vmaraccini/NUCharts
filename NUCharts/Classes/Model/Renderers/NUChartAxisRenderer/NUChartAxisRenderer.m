@@ -77,9 +77,9 @@
     }
 
     if (self.displaysAxisLine) {
-        CGPathRef path = [self axisLineForAxis:axis
-                               orthogonalRange:orthogonalRange
-                                        bounds:bounds];
+        CGPathRef path = [self newAxisLineForAxis:axis
+                                  orthogonalRange:orthogonalRange
+                                           bounds:bounds];
 
         CAShapeLayer *shape = [self.axisLineRenderer updatePath:path
                                                          bounds:bounds
@@ -92,10 +92,10 @@
     }
 
     if (self.displaysAxisTicks) {
-        CGPathRef path = [self axisTicksForAxis:axis
-                                         bounds:bounds
-                                   xScaleFactor:xScaleFactor
-                                   yScaleFactor:yScaleFactor];
+        CGPathRef path = [self newAxisTicksForAxis:axis
+                                            bounds:bounds
+                                      xScaleFactor:xScaleFactor
+                                      yScaleFactor:yScaleFactor];
 
         CAShapeLayer *shape = [self.tickRenderer updatePath:path
                                                      bounds:bounds
@@ -108,10 +108,10 @@
     }
 
     if (self.displaysAxisMajorLines) {
-        CGPathRef path = [self axisMajorLinesForAxis:axis
-                                     orthogonalRange:orthogonalRange
-                                        xScaleFactor:animated ? self.oldXScaleFactor : xScaleFactor
-                                        yScaleFactor:animated ? self.oldYScaleFactor : yScaleFactor];
+        CGPathRef path = [self newAxisMajorLinesForAxis:axis
+                                        orthogonalRange:orthogonalRange
+                                           xScaleFactor:animated ? self.oldXScaleFactor : xScaleFactor
+                                           yScaleFactor:animated ? self.oldYScaleFactor : yScaleFactor];
 
         CAShapeLayer *shape = [self.majorLinesRenderer updatePath:path
                                                            bounds:bounds
@@ -124,10 +124,10 @@
     }
 
     if (self.displaysAxisMinorLines) {
-        CGPathRef path = [self axisMinorLinesForAxis:axis
-                                     orthogonalRange:orthogonalRange
-                                        xScaleFactor:animated ? self.oldXScaleFactor : xScaleFactor
-                                        yScaleFactor:animated ? self.oldYScaleFactor : yScaleFactor];
+        CGPathRef path = [self newAxisMinorLinesForAxis:axis
+                                        orthogonalRange:orthogonalRange
+                                           xScaleFactor:animated ? self.oldXScaleFactor : xScaleFactor
+                                           yScaleFactor:animated ? self.oldYScaleFactor : yScaleFactor];
 
         CAShapeLayer *shape = [self.minorLinesRenderer updatePath:path
                                                            bounds:bounds
@@ -146,28 +146,28 @@
 
     //Update ranges separately for animations to work
     if (animated) {
-        CGPathRef majorPath = [self axisMajorLinesForAxis:axis
-                                          orthogonalRange:orthogonalRange
-                                             xScaleFactor:xScaleFactor
-                                             yScaleFactor:yScaleFactor];
+        CGPathRef majorPath = [self newAxisMajorLinesForAxis:axis
+                                             orthogonalRange:orthogonalRange
+                                                xScaleFactor:xScaleFactor
+                                                yScaleFactor:yScaleFactor];
 
         [self.majorLinesRenderer updatePath:majorPath
                                      bounds:bounds
                                    animated:animated];
 
-        CGPathRef minorPath = [self axisMinorLinesForAxis:axis
-                                          orthogonalRange:orthogonalRange
-                                             xScaleFactor:xScaleFactor
-                                             yScaleFactor:yScaleFactor];
+        CGPathRef minorPath = [self newAxisMinorLinesForAxis:axis
+                                             orthogonalRange:orthogonalRange
+                                                xScaleFactor:xScaleFactor
+                                                yScaleFactor:yScaleFactor];
 
         [self.minorLinesRenderer updatePath:minorPath
                                      bounds:bounds
                                    animated:animated];
 
-        CGPathRef ticksPath = [self axisMinorLinesForAxis:axis
-                                          orthogonalRange:orthogonalRange
-                                             xScaleFactor:xScaleFactor
-                                             yScaleFactor:yScaleFactor];
+        CGPathRef ticksPath = [self newAxisMinorLinesForAxis:axis
+                                             orthogonalRange:orthogonalRange
+                                                xScaleFactor:xScaleFactor
+                                                yScaleFactor:yScaleFactor];
 
         [self.minorLinesRenderer updatePath:ticksPath
                                      bounds:bounds
@@ -192,9 +192,9 @@
 
 #pragma mark - Path creation
 
-- (CGPathRef)axisLineForAxis:(NUChartAxis *)axis
-             orthogonalRange:(NUChartRange *)orthogonalRange
-                      bounds:(CGRect)bounds
+- (CGPathRef)newAxisLineForAxis:(NUChartAxis *)axis
+                orthogonalRange:(NUChartRange *)orthogonalRange
+                         bounds:(CGRect)bounds
 {
     NSArray *orthogonal = @[@(self.intercept), @(self.intercept)];
     NSArray *parallel = @[@(axis.range.minimum), @(axis.range.maximum)];
@@ -202,49 +202,49 @@
     NUChartLinearInterpolator *interpolator = [NUChartLinearInterpolator new];
     NUChartData *data = [[NUChartData alloc] initWithxValues:parallel
                                                      yValues:orthogonal];
-    return [interpolator pathForData:data
-                              xRange:axis.range
-                              yRange:orthogonalRange
-                              bounds:bounds];
+    return [interpolator newPathForData:data
+                                 xRange:axis.range
+                                 yRange:orthogonalRange
+                                 bounds:bounds];
 }
 
-- (CGPathRef)axisTicksForAxis:(NUChartAxis *)axis
-                       bounds:(CGRect)bounds
-                 xScaleFactor:(CGFloat)xScaleFactor
-                 yScaleFactor:(CGFloat)yScaleFactor
+- (CGPathRef)newAxisTicksForAxis:(NUChartAxis *)axis
+                          bounds:(CGRect)bounds
+                    xScaleFactor:(CGFloat)xScaleFactor
+                    yScaleFactor:(CGFloat)yScaleFactor
 {
-    return [self verticalLinesForAxis:axis
-                            frequency:self.tickFrequency
-                           lowerValue:self.intercept - self.tickHeight / 2.f
-                           upperValue:self.intercept + self.tickHeight / 2.f
-                         xScaleFactor:xScaleFactor
-                         yScaleFactor:yScaleFactor];
+    return [self newVerticalLinesForAxis:axis
+                               frequency:self.tickFrequency
+                              lowerValue:self.intercept - self.tickHeight / 2.f
+                              upperValue:self.intercept + self.tickHeight / 2.f
+                            xScaleFactor:xScaleFactor
+                            yScaleFactor:yScaleFactor];
 }
 
-- (CGPathRef)axisMajorLinesForAxis:(NUChartAxis *)axis
-                   orthogonalRange:(NUChartRange *)orthogonalRange
-                      xScaleFactor:(CGFloat)xScaleFactor
-                      yScaleFactor:(CGFloat)yScaleFactor
+- (CGPathRef)newAxisMajorLinesForAxis:(NUChartAxis *)axis
+                      orthogonalRange:(NUChartRange *)orthogonalRange
+                         xScaleFactor:(CGFloat)xScaleFactor
+                         yScaleFactor:(CGFloat)yScaleFactor
 {
-    return [self verticalLinesForAxis:axis
-                            frequency:self.majorLineFrequency
-                           lowerValue:orthogonalRange.minimum
-                           upperValue:orthogonalRange.maximum
-                         xScaleFactor:xScaleFactor
-                         yScaleFactor:yScaleFactor];
+    return [self newVerticalLinesForAxis:axis
+                               frequency:self.majorLineFrequency
+                              lowerValue:orthogonalRange.minimum
+                              upperValue:orthogonalRange.maximum
+                            xScaleFactor:xScaleFactor
+                            yScaleFactor:yScaleFactor];
 }
 
-- (CGPathRef)axisMinorLinesForAxis:(NUChartAxis *)axis
-                   orthogonalRange:(NUChartRange *)orthogonalRange
-                      xScaleFactor:(CGFloat)xScaleFactor
-                      yScaleFactor:(CGFloat)yScaleFactor
+- (CGPathRef)newAxisMinorLinesForAxis:(NUChartAxis *)axis
+                      orthogonalRange:(NUChartRange *)orthogonalRange
+                         xScaleFactor:(CGFloat)xScaleFactor
+                         yScaleFactor:(CGFloat)yScaleFactor
 {
-    return [self verticalLinesForAxis:axis
-                            frequency:self.minorLineFrequency
-                           lowerValue:orthogonalRange.minimum
-                           upperValue:orthogonalRange.maximum
-                         xScaleFactor:xScaleFactor
-                         yScaleFactor:yScaleFactor];
+    return [self newVerticalLinesForAxis:axis
+                               frequency:self.minorLineFrequency
+                              lowerValue:orthogonalRange.minimum
+                              upperValue:orthogonalRange.maximum
+                            xScaleFactor:xScaleFactor
+                            yScaleFactor:yScaleFactor];
 }
 
 #pragma mark - Helper
@@ -268,10 +268,10 @@
     return points;
 }
 
-- (CGPathRef)verticalLinesForLowerPoints:(NSArray<NSValue *>*)lower
-                             upperPoints:(NSArray<NSValue *>*)upper
-                            xScaleFactor:(CGFloat)xScaleFactor
-                            yScaleFactor:(CGFloat)yScaleFactor
+- (CGPathRef)newVerticalLinesForLowerPoints:(NSArray<NSValue *>*)lower
+                                upperPoints:(NSArray<NSValue *>*)upper
+                               xScaleFactor:(CGFloat)xScaleFactor
+                               yScaleFactor:(CGFloat)yScaleFactor
 {
     CGPathRef result = CGPathCreateMutable();
     CGAffineTransform scale = CGAffineTransformMakeScale(xScaleFactor, yScaleFactor);
@@ -285,12 +285,12 @@
     return CGPathRetain(result);
 }
 
-- (CGPathRef)verticalLinesForAxis:(NUChartAxis *)axis
-                        frequency:(CGFloat)frequency
-                       lowerValue:(CGFloat)lowerValue
-                       upperValue:(CGFloat)upperValue
-                     xScaleFactor:(CGFloat)xScaleFactor
-                     yScaleFactor:(CGFloat)yScaleFactor
+- (CGPathRef)newVerticalLinesForAxis:(NUChartAxis *)axis
+                           frequency:(CGFloat)frequency
+                          lowerValue:(CGFloat)lowerValue
+                          upperValue:(CGFloat)upperValue
+                        xScaleFactor:(CGFloat)xScaleFactor
+                        yScaleFactor:(CGFloat)yScaleFactor
 {
     NSArray <NSValue *>*reference = [self pointsInAxis:axis withFrequency:frequency];
     if (reference.count == 0) {
@@ -306,10 +306,10 @@
         [upper addObject:[NSValue valueWithCGPoint:CGPointMake(referencePoint.x, upperValue)]];
     }
 
-    return [self verticalLinesForLowerPoints:lower
-                                 upperPoints:upper
-                                xScaleFactor:xScaleFactor
-                                yScaleFactor:yScaleFactor];
+    return [self newVerticalLinesForLowerPoints:lower
+                                    upperPoints:upper
+                                   xScaleFactor:xScaleFactor
+                                   yScaleFactor:yScaleFactor];
 }
 
 @end

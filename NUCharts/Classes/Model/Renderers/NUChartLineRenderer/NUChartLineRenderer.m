@@ -37,17 +37,17 @@
                   yRange:(NUChartRange *)yRange
                   bounds:(CGRect)bounds
 {
-    return [self.interpolator pathForData:data
-                                   xRange:xRange
-                                   yRange:yRange
-                                   bounds:bounds];
+    return [self.interpolator newPathForData:data
+                                      xRange:xRange
+                                      yRange:yRange
+                                      bounds:bounds];
 }
 
 - (nullable CAShapeLayer *)drawPath:(CGPathRef)path
-                      bounds:(CGRect)bounds
+                             bounds:(CGRect)bounds
 {
     [super drawPath:path
-               bounds:bounds];
+             bounds:bounds];
 
     self.shapeLayer.lineDashPattern = self.dashPattern;
     self.shapeLayer.lineDashPhase = self.dashPhase;
@@ -58,7 +58,7 @@
     self.shapeLayer.strokeEnd = self.strokeEnd;
 
     [super willUpdate];
-    
+
     return self.shapeLayer;
 }
 

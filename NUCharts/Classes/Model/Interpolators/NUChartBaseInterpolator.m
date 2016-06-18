@@ -16,10 +16,10 @@
 
 @implementation NUChartBaseInterpolator
 
-- (nullable CGPathRef)pathForData:(NUChartData *)data
-                  xRange:(NUChartRange *)xRange
-                  yRange:(NUChartRange *)yRange
-                  bounds:(CGRect)bounds CF_RETURNS_RETAINED
+- (nullable CGPathRef)newPathForData:(NUChartData *)data
+                              xRange:(NUChartRange *)xRange
+                              yRange:(NUChartRange *)yRange
+                              bounds:(CGRect)bounds
 {
     if (CGRectIsEmpty(bounds)) {
         self.mutablePath = NULL;

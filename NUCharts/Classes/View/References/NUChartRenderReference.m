@@ -125,13 +125,15 @@
         [self drawyAxisAnimated:YES];
     }
 }
-
+//
 - (void)dealloc
 {
-    @try {
-        [self.xAxis removeObserver:self forKeyPath:kNUChartAxisRangeKey];
-        [self.yAxis removeObserver:self forKeyPath:kNUChartAxisRangeKey];
-    } @catch (NSException *exception) { }
+//{
+//    @try {
+
+    [_xAxis removeObserver:self forKeyPath:kNUChartAxisRangeKey];
+    [_yAxis removeObserver:self forKeyPath:kNUChartAxisRangeKey];
+//    } @catch (NSException *exception) { }
 }
 
 @end

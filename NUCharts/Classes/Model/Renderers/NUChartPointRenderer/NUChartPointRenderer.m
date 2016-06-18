@@ -49,10 +49,10 @@
                   yRange:(NUChartRange *)yRange
                   bounds:(CGRect)bounds
 {
-    return [self.interpolator pathForData:data
-                                   xRange:xRange
-                                   yRange:yRange
-                                   bounds:bounds];
+    return [self.interpolator newPathForData:data
+                                      xRange:xRange
+                                      yRange:yRange
+                                      bounds:bounds];
 }
 
 - (CAShapeLayer *)updateData:(NUChartData *)data
@@ -99,10 +99,10 @@
 {
     //Generate a small path
     self.interpolator.diameter = 0;
-    CGPathRef smallPath = [self.interpolator pathForData:self.data
-                                                  xRange:self.xRange
-                                                  yRange:self.yRange
-                                                  bounds:self.bounds];
+    CGPathRef smallPath = [self.interpolator newPathForData:self.data
+                                                     xRange:self.xRange
+                                                     yRange:self.yRange
+                                                     bounds:self.bounds];
     self.interpolator.diameter = self.diameter;
 
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
