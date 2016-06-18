@@ -126,8 +126,17 @@
 
 #pragma mark - Private
 
-- (void)drawChart {
+-(void)willMoveToSuperview:(UIView *)newSuperview
+{
+    if (!newSuperview) {
+        [self.containerView removeFromSuperview];
+        self.containerView = nil;
+    }
+    [super willMoveToSuperview:newSuperview];
+}
 
+- (void)drawChart
+{
     //Remove existing layers
     [[self.containerView.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
 
