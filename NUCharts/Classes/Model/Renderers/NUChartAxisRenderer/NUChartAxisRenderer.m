@@ -146,32 +146,41 @@
 
     //Update ranges separately for animations to work
     if (animated) {
-        CGPathRef majorPath = [self newAxisMajorLinesForAxis:axis
-                                             orthogonalRange:orthogonalRange
-                                                xScaleFactor:xScaleFactor
-                                                yScaleFactor:yScaleFactor];
 
-        [self.majorLinesRenderer updatePath:majorPath
-                                     bounds:bounds
-                                   animated:animated];
+        if (self.displaysAxisMajorLines) {
+            CGPathRef majorPath = [self newAxisMajorLinesForAxis:axis
+                                                 orthogonalRange:orthogonalRange
+                                                    xScaleFactor:xScaleFactor
+                                                    yScaleFactor:yScaleFactor];
 
-        CGPathRef minorPath = [self newAxisMinorLinesForAxis:axis
-                                             orthogonalRange:orthogonalRange
-                                                xScaleFactor:xScaleFactor
-                                                yScaleFactor:yScaleFactor];
+            [self.majorLinesRenderer updatePath:majorPath
+                                         bounds:bounds
+                                       animated:animated];
 
-        [self.minorLinesRenderer updatePath:minorPath
-                                     bounds:bounds
-                                   animated:animated];
+        }
 
-        CGPathRef ticksPath = [self newAxisMinorLinesForAxis:axis
-                                             orthogonalRange:orthogonalRange
-                                                xScaleFactor:xScaleFactor
-                                                yScaleFactor:yScaleFactor];
+        if (self.displaysAxisMinorLines) {
+            CGPathRef minorPath = [self newAxisMinorLinesForAxis:axis
+                                                 orthogonalRange:orthogonalRange
+                                                    xScaleFactor:xScaleFactor
+                                                    yScaleFactor:yScaleFactor];
 
-        [self.minorLinesRenderer updatePath:ticksPath
-                                     bounds:bounds
-                                   animated:animated];
+            [self.minorLinesRenderer updatePath:minorPath
+                                         bounds:bounds
+                                       animated:animated];
+        }
+
+        if (self.displaysAxisTicks) {
+            CGPathRef ticksPath = [self newAxisMinorLinesForAxis:axis
+                                                 orthogonalRange:orthogonalRange
+                                                    xScaleFactor:xScaleFactor
+                                                    yScaleFactor:yScaleFactor];
+
+            [self.minorLinesRenderer updatePath:ticksPath
+                                         bounds:bounds
+                                       animated:animated];
+        }
+
     }
 
     self.oldXScaleFactor = xScaleFactor;
@@ -254,12 +263,12 @@
 {
     NSMutableArray <NSNumber *>*points = [NSMutableArray new];
 
-    NSUInteger numberOfPoints = ceil(axis.range.span / frequency);
-    CGFloat spacing = axis.range.span / numberOfPoints;
-
-    if (numberOfPoints <= 0) {
+    if (frequency <= 0) {
         return nil;
     }
+
+    NSUInteger numberOfPoints = ceil(axis.range.span / frequency);
+    CGFloat spacing = axis.range.span / numberOfPoints;
 
     for (int i = 0; i <= numberOfPoints; i++) {
         [points addObject:@(spacing * i + axis.range.minimum)];
